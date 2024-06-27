@@ -18,10 +18,14 @@ for i in range(len(list)-1,0,-1):
 
 
 x=len(list)
+t=[0]*x
 def weighted(x):
   if x==0:
     return 0
+  elif t[x-1]:
+      return t[x-1]
   else:
-    return max(weighted(x-1),list[x-1][2]+weighted(p[x-1]))
-  
+    t[x-1]=max(weighted(x-1),list[x-1][2]+weighted(p[x-1]))
+    return t[x-1]
+
 print(weighted(x))
