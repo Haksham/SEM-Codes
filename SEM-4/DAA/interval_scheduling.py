@@ -9,4 +9,4 @@ for i in list:
     p=i[1]
     c+=1
 print(t)
-print(c)
+print("total: ",c)
