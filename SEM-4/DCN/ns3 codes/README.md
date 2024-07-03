@@ -1,5 +1,4 @@
 Download ns3.39
-
 Extract the tar file in msrit folder
 
 sudo apt-get update --fix-missing
