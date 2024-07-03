@@ -1,0 +1,27 @@
+clc;
+syms x y h k
+f(x,y)=x^2-y^2-4;
+g(x,y)=y^2-x^2-16;
+
+dfx=diff(f,x);%derivative
+dfy=diff(f,y);
+dgx=diff(g,x);
+dgy=diff(g,y);
+
+x0=input("enter the initial value of x:");
+y0=input("enter the initial value of y:");
+
+for i=1:1000
+    EQ1=dfx(x0,y0)*h+dfy(x0,y0)*k+f(x0,y0);
+    EQ2=dgx(x0,y0)*h+dgy(x0,y0)*k+g(x0,y0);
+    S=solve([EQ1==0, EQ2==0],[h,k]);
+    xn=x0+S.h;
+    yn=y0+S.k;
+fprintf("The required root at %d is %f\n %f\n,i,xn,yn");
+if abs(f(xn,yn))<=0,00001
+    break;
+else
+    x0=xn;
+    y0=yn;
+end
+end

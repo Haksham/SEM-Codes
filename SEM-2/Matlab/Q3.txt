@@ -1,0 +1,7 @@
+syms x 
+T1=taylor(exp(x)) 
+%Maculurian Series 
+T2=taylor(sin(x)) 
+T3=taylor(log(sin(x)),x,2) 
+% Taylor series at x=2 
+T4=taylor(log(x),x,1)

@@ -1,0 +1,77 @@
+% syms x
+% t1=taylor(exp(x))
+% t2=taylor(sin(x))
+% t3=taylor(log(sin(x)),x,2)
+% t4=taylor(log(x),x,1)
+
+% sympref('PolynomialDisplayStyle','ascend');
+% t1
+
+% syms x y
+% f=y*exp(x-1)-log(y);
+% t=taylor(f,[x y],[1 1],'order',3)
+
+% syms x y z
+% f=sin(x)+cos(y)+exp(z);
+% t=taylor(f,[x y z],[1 1 1]);
+% vpa(t,3)
+
+% syms x
+% f=sin(x);
+% t6=taylor(f,x,'order',6);
+% t8=taylor(f,x,'order',8);
+% t10=taylor(f,x,'order',10);
+% fplot([t6 t8 t10 f])
+% xlim([-4 4])
+% grid on
+% legend('o(x^6)','o(x^8)','o(x^10)','sin(x)')
+% title('Taylor Series Expansion~~Harshvardhan Mehta')
+
+
+% syms x
+% f=(1+sin(x))^0.5;
+% t1=taylor(f,x,'order',4)
+
+syms x y real
+f=input('enter function:')
+dfx=diff(f,x);
+dfy=diff(f,y);
+eqns=[dfx==0,dfy==0];
+S=solve(eqns,[x y],'real',true);
+G=S.x;
+H=S.y;
+dfxx=diff(dfx,x);
+dfyy=diff(dfy,y);
+dfxy=diff(dfx,y);
+dfx=diff(dfy,x);
+A=subs(dfxx,S);
+B=subs(dfxy,S);
+C=subs(dfyy,S);
+fun=subs(f,S);
+
+for i=1:length(A)
+    if A(i)*C(i)-B(i)>0 && A(i)<0
+        fprintf('the max pt is %d %d',[G(i),H(i)]);
+        fprintf('\n The max valuse is %d',fun(i));
+        figure;
+        fsurf(f,[-3 3 -3 3]);
+        hold on
+        plot3(G(i),H(i),fun,'*w','MarkerSize',10)
+        hold off
+    
+    elseif A(i)*C(i)-B(i)>0 && A(i)>0
+           fprintf('min pt is %d %d',[G(i),H(i)]);
+           fprintf('\n min value is %d %d',fun(i));
+           figure;
+           fsurf(f,[-3 3 -3 3]);
+           hold on
+           plot3(G(i),H(i),fun,'*w','MarkerSize',10)
+           hold off
+           
+    elseif  A(i)*C(i)-B(i)<0
+        fprintf('saddle pt %d %d',[G(i),H(i)]);
+    else
+        fprintf('no concludion for %d %d',[G(i),H(i)]);
+    end
+end
+ title('By~Harshvardhan Mehta')

@@ -1,0 +1,30 @@
+clc
+close;
+clear;
+f=@(x,y) x+y;
+x0=0;
+y0=1;
+xn=1;
+h=0.1;
+x=x0:h:xn;
+y=zeros(size(x));
+y(1)=y0;
+for i=2:length(x)
+    y(i)=y(i-1)+h*f(x(i-1),y(i-1));
+    disp(y(i))
+end
+syms s(t)
+ode=diff(s)-t-s;
+cond=s(0)==1;
+sSol(t)=dsolve(ode,cond)
+t=[0:0.1:1];
+plot(x,y,'r');
+hold on
+plot(t,sSol(t),'b');
+hold off
+legend('Exact solution','Numrical solution')
+xlabel('x');
+ylabel('y');
+title('Exact and Numerical solution using Eulers mehtod');
+title('By`Harshvardhan Mehta');
+

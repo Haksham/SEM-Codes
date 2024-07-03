@@ -1,0 +1,20 @@
+%1) x=[21 24 25 28 29 20 30 27];
+% plot(x)
+
+%2)
+% x=[21 41 45 55 65 70 75];
+% y=[5 7 5 2 4 7 8];
+% plot(x,y)
+
+%3)
+% plot(x,y,':g*')
+% plot(x,y,'r-.d')
+
+%4)
+% plot(x,y,'-bo','linewidth',2,'markersize',12,'markeredgecolor','m','MarkerFaceColor','y')
+
+%5)
+%t=[-6:0.01:8];
+%r=5.5.^(-0.1*t).*sin(3*t);
+% plot(t,r,'b',"LineWidth",1.5)
+

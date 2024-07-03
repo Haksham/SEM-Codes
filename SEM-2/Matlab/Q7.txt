@@ -1,0 +1,22 @@
+clc;
+clear;
+syms x
+f(x)= x*sin(x)+cos(x);
+df(x)=diff(f,x);
+a=2,b=3;
+if f(a)*f(b)<0
+    x0=(a+b)/2;
+    for n=1:5000
+        xn=x0-(f(x0)/df(x0));
+        fprintf('\n the required root at %d is : %f',n,xn);
+        if abs(f(xn))<= 0.000001
+                break;
+        else
+                x0=xn;
+        end 
+    end 
+        fplot(f);
+        xlim([-10 10])
+else
+fprintf('change interval value')
+end
