@@ -1,6 +1,10 @@
 import java.net.*;
 import java.io.*;
 
+// Change the ip addres to yout pc id 
+// Goto new terminal -> enter "ifconfig" -> under "enp3o or eno1" -> "inet" -> check the ip just after inet (ex. 172.1.31.177)
+// No changes in Port
+
 public class Client {
   public static void main(String[] args) throws Exception {
     Socket sock = new Socket("192.168.56.1", 4000);

@@ -65,7 +65,7 @@ using namespace ns3;
 
 NS_LOG_COMPONENT_DEFINE("WifiSimpleAdhoc");
 
-/**
+/*
  * Function called when a packet is received.
  *
  * \param socket The receiving socket.
@@ -78,7 +78,7 @@ void ReceivePacket(Ptr<Socket> socket)
     }
 }
 
-/**
+/*
  * Generate traffic.
  *
  * \param socket The sending socket.
