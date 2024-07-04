@@ -68,6 +68,8 @@
 #include "ns3/point-to-point-module.h"
 #include "ns3/traffic-control-module.h"
 
+// 1--------------> add all header from traffic-control.cc
+
 using namespace ns3;
 
 NS_LOG_COMPONENT_DEFINE("WifiSimpleAdhoc");
@@ -120,6 +122,8 @@ int main(int argc, char *argv[])
     uint32_t numPackets = 1;
     double interval = 1.0; // seconds
     bool verbose = false;
+
+    // 2---------------> add simulationTIme from traffic-control.cc
     double simulationTime = 10;
 
     CommandLine cmd(__FILE__);
@@ -137,6 +141,8 @@ int main(int argc, char *argv[])
     Config::SetDefault("ns3::WifiRemoteStationManager::NonUnicastMode", StringValue(phyMode));
 
     NodeContainer c;
+
+    // 3---------------> 2 to 4
     c.Create(4);
 
     // The below set of helpers will help us to put together the wifi NICs we want
@@ -178,6 +184,8 @@ int main(int argc, char *argv[])
     Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator>();
     positionAlloc->Add(Vector(0.0, 0.0, 0.0));
     positionAlloc->Add(Vector(10.0, 0.0, 0.0));
+
+    // 4-----------------> add below 2 lines for positionAlloc
     positionAlloc->Add(Vector(10.0, 10.0, 0.0));
     positionAlloc->Add(Vector(0.0, 10.0, 0.0));
     mobility.SetPositionAllocator(positionAlloc);
@@ -192,53 +200,7 @@ int main(int argc, char *argv[])
     ipv4.SetBase("10.1.1.0", "255.255.255.0");
     Ipv4InterfaceContainer i = ipv4.Assign(devices);
 
-    // Flow
-    uint16_t port = 7;
-    Address localAddress(InetSocketAddress(Ipv4Address::GetAny(), port));
-    PacketSinkHelper packetSinkHelper("ns3::TcpSocketFactory", localAddress);
-    ApplicationContainer sinkApp = packetSinkHelper.Install(c.Get(0));
-
-    sinkApp.Start(Seconds(0.0));
-    sinkApp.Stop(Seconds(simulationTime + 0.1));
-
-    uint32_t payloadSize = 1448;
-    Config::SetDefault("ns3::TcpSocket::SegmentSize", UintegerValue(payloadSize));
-
-    OnOffHelper onoff("ns3::TcpSocketFactory", Ipv4Address::GetAny());
-    onoff.SetAttribute("OnTime", StringValue("ns3::ConstantRandomVariable[Constant=1]"));
-    onoff.SetAttribute("OffTime", StringValue("ns3::ConstantRandomVariable[Constant=0]"));
-    onoff.SetAttribute("PacketSize", UintegerValue(payloadSize));
-    onoff.SetAttribute("DataRate", StringValue("50Mbps")); // bit/s
-    ApplicationContainer apps;
-
-    InetSocketAddress rmt(i.GetAddress(0), port);
-    rmt.SetTos(0xb8);
-    AddressValue remoteAddress(rmt);
-    onoff.SetAttribute("Remote", remoteAddress);
-    apps.Add(onoff.Install(c.Get(2)));
-    apps.Start(Seconds(1.0));
-    apps.Stop(Seconds(simulationTime + 0.1));
-
-    FlowMonitorHelper flowmon;
-    Ptr<FlowMonitor> monitor = flowmon.InstallAll();
-
-    Simulator::Stop(Seconds(simulationTime + 5));
-    Simulator::Run();
-
-    Ptr<Ipv4FlowClassifier> classifier = DynamicCast<Ipv4FlowClassifier>(flowmon.GetClassifier());
-    std::map<FlowId, FlowMonitor::FlowStats> stats = monitor->GetFlowStats();
-    std::cout << std::endl
-              << "*** Flow monitor statistics ***" << std::endl;
-    std::cout << "  Tx Packets/Bytes:   " << stats[1].txPackets << " / " << stats[1].txBytes
-              << std::endl;
-    std::cout << "  Offered Load: "
-              << stats[1].txBytes * 8.0 /
-                     (stats[1].timeLastTxPacket.GetSeconds() -
-                      stats[1].timeFirstTxPacket.GetSeconds()) /
-                     1000000
-              << " Mbps" << std::endl;
-    std::cout << "  Rx Packets/Bytes:   " << stats[1].rxPackets << " / " << stats[1].rxBytes
-              << std::endl;
+    // 5------------------> comment out TypeId to ScheduleIwith Context
 
     /*
         TypeId tid = TypeId::LookupByName("ns3::UdpSocketFactory");
@@ -266,6 +228,69 @@ int main(int argc, char *argv[])
                                        numPackets,
                                        interPacketInterval);
                                        */
+
+    // 6-------------->add routing table from traffic-control.cc
+
+    Ipv4GlobalRoutingHelper::PopulateRoutingTables();
+
+    // 7---------------> add flow from traffic-control.cc
+    // Flow
+    uint16_t port = 7;
+    Address localAddress(InetSocketAddress(Ipv4Address::GetAny(), port));
+
+    // 8-----------------> socket type = "ns3::TcpSocketFactory" from traffic-control.cc
+
+    PacketSinkHelper packetSinkHelper("ns3::TcpSocketFactory", localAddress);
+
+    // 9--------------------> nodes => c
+    ApplicationContainer sinkApp = packetSinkHelper.Install(c.Get(0));
+
+    sinkApp.Start(Seconds(0.0));
+    sinkApp.Stop(Seconds(simulationTime + 0.1));
+
+    uint32_t payloadSize = 1448;
+    Config::SetDefault("ns3::TcpSocket::SegmentSize", UintegerValue(payloadSize));
+
+    // 10--------------------> socket type = "ns3::TcpSocketFactory" from traffic-control.cc
+    OnOffHelper onoff("ns3::TcpSocketFactory", Ipv4Address::GetAny());
+    onoff.SetAttribute("OnTime", StringValue("ns3::ConstantRandomVariable[Constant=1]"));
+    onoff.SetAttribute("OffTime", StringValue("ns3::ConstantRandomVariable[Constant=0]"));
+    onoff.SetAttribute("PacketSize", UintegerValue(payloadSize));
+    onoff.SetAttribute("DataRate", StringValue("50Mbps")); // bit/s
+    ApplicationContainer apps;
+
+    // 11------------------> interfaces => i
+
+    InetSocketAddress rmt(i.GetAddress(0), port);
+    rmt.SetTos(0xb8);
+    AddressValue remoteAddress(rmt);
+    onoff.SetAttribute("Remote", remoteAddress);
+
+    // 12------------------> nodes => c , 1-> 2
+    apps.Add(onoff.Install(c.Get(2)));
+    apps.Start(Seconds(1.0));
+    apps.Stop(Seconds(simulationTime + 0.1));
+
+    FlowMonitorHelper flowmon;
+    Ptr<FlowMonitor> monitor = flowmon.InstallAll();
+
+    Simulator::Stop(Seconds(simulationTime + 5));
+    Simulator::Run();
+
+    Ptr<Ipv4FlowClassifier> classifier = DynamicCast<Ipv4FlowClassifier>(flowmon.GetClassifier());
+    std::map<FlowId, FlowMonitor::FlowStats> stats = monitor->GetFlowStats();
+    std::cout << std::endl
+              << "*** Flow monitor statistics ***" << std::endl;
+    std::cout << "  Tx Packets/Bytes:   " << stats[1].txPackets << " / " << stats[1].txBytes
+              << std::endl;
+    std::cout << "  Offered Load: "
+              << stats[1].txBytes * 8.0 /
+                     (stats[1].timeLastTxPacket.GetSeconds() -
+                      stats[1].timeFirstTxPacket.GetSeconds()) /
+                     1000000
+              << " Mbps" << std::endl;
+    std::cout << "  Rx Packets/Bytes:   " << stats[1].rxPackets << " / " << stats[1].rxBytes
+              << std::endl;
 
     Simulator::Run();
     Simulator::Destroy();

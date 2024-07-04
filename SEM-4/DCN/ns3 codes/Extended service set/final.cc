@@ -23,6 +23,8 @@
 #include "ns3/ssid.h"
 #include "ns3/yans-wifi-helper.h"
 
+// 1-----------------> add these 2 header files below from traffic-control.cc
+
 #include "ns3/traffic-control-module.h"
 #include "ns3/flow-monitor-module.h"
 
@@ -47,6 +49,8 @@ int main(int argc, char *argv[])
     uint32_t nCsma = 3;
     uint32_t nWifi = 3;
     bool tracing = false;
+
+    // 2-----------> ADD simulation time from traffic-control.cc
     double simulationTime = 10;
 
     CommandLine cmd(__FILE__);
@@ -158,6 +162,9 @@ int main(int argc, char *argv[])
     address.Assign(staDevices);
     address.Assign(apDevices);
     Ipv4GlobalRoutingHelper::PopulateRoutingTables();
+
+    // 3-------------------> comment this below part
+
     /*
         UdpEchoServerHelper echoServer(9);
 
@@ -175,10 +182,15 @@ int main(int argc, char *argv[])
         clientApps.Stop(Seconds(10.0));
     */
 
+    // 4----------------> add flow from traffic-control.cc
     // Flow
     uint16_t port = 7;
     Address localAddress(InetSocketAddress(Ipv4Address::GetAny(), port));
+
+    // 5---------------> socket type= "ns3::UdpSocketFactory" from traffic-control.cc
     PacketSinkHelper packetSinkHelper("ns3::UdpSocketFactory", localAddress);
+
+    // 6----------------> nodes.Get(0) to csmaNodes.Get(2)
     ApplicationContainer sinkApp = packetSinkHelper.Install(csmaNodes.Get(2));
 
     sinkApp.Start(Seconds(0.0));
@@ -187,6 +199,7 @@ int main(int argc, char *argv[])
     uint32_t payloadSize = 1448;
     Config::SetDefault("ns3::TcpSocket::SegmentSize", UintegerValue(payloadSize));
 
+    // 7---------------> socket type= "ns3::UdpSocketFactory" from traffic-control.cc
     OnOffHelper onoff("ns3::UdpSocketFactory", Ipv4Address::GetAny());
     onoff.SetAttribute("OnTime", StringValue("ns3::ConstantRandomVariable[Constant=1]"));
     onoff.SetAttribute("OffTime", StringValue("ns3::ConstantRandomVariable[Constant=0]"));
@@ -194,10 +207,13 @@ int main(int argc, char *argv[])
     onoff.SetAttribute("DataRate", StringValue("50Mbps")); // bit/s
     ApplicationContainer apps;
 
+    // 8--------------------> interfaces to csmaInterfaces
     InetSocketAddress rmt(csmaInterfaces.GetAddress(0), port);
     rmt.SetTos(0xb8);
     AddressValue remoteAddress(rmt);
     onoff.SetAttribute("Remote", remoteAddress);
+
+    // 9-----------------------> nodes.Get(1) to wifiStanodes.Get(0)
     apps.Add(onoff.Install(wifiStaNodes.Get(0)));
     apps.Start(Seconds(1.0));
     apps.Stop(Seconds(simulationTime + 0.1));
@@ -222,42 +238,6 @@ int main(int argc, char *argv[])
               << " Mbps" << std::endl;
     std::cout << "  Rx Packets/Bytes:   " << stats[1].rxPackets << " / " << stats[1].rxBytes
               << std::endl;
-    /*
-        uint32_t packetsDroppedByQueueDisc = 0;
-        uint64_t bytesDroppedByQueueDisc = 0;
-        if (stats[1].packetsDropped.size() > Ipv4FlowProbe::DROP_QUEUE_DISC)
-        {
-            packetsDroppedByQueueDisc = stats[1].packetsDropped[Ipv4FlowProbe::DROP_QUEUE_DISC];
-            bytesDroppedByQueueDisc = stats[1].bytesDropped[Ipv4FlowProbe::DROP_QUEUE_DISC];
-        }
-        std::cout << "  Packets/Bytes Dropped by Queue Disc:   " << packetsDroppedByQueueDisc << " / "
-                  << bytesDroppedByQueueDisc << std::endl;
-        uint32_t packetsDroppedByNetDevice = 0;
-        uint64_t bytesDroppedByNetDevice = 0;
-        if (stats[1].packetsDropped.size() > Ipv4FlowProbe::DROP_QUEUE)
-        {
-            packetsDroppedByNetDevice = stats[1].packetsDropped[Ipv4FlowProbe::DROP_QUEUE];
-            bytesDroppedByNetDevice = stats[1].bytesDropped[Ipv4FlowProbe::DROP_QUEUE];
-        }
-        std::cout << "  Packets/Bytes Dropped by NetDevice:   " << packetsDroppedByNetDevice << " / "
-                  << bytesDroppedByNetDevice << std::endl;
-        std::cout << "  Throughput: "
-                  << stats[1].rxBytes * 8.0 /
-                         (stats[1].timeLastRxPacket.GetSeconds() -
-                          stats[1].timeFirstRxPacket.GetSeconds()) /
-                         1000000
-                  << " Mbps" << std::endl;
-        std::cout << "  Mean delay:   " << stats[1].delaySum.GetSeconds() / stats[1].rxPackets
-                  << std::endl;
-        std::cout << "  Mean jitter:   " << stats[1].jitterSum.GetSeconds() / (stats[1].rxPackets - 1)
-                  << std::endl;
-        auto dscpVec = classifier->GetDscpCounts(1);
-        for (auto p : dscpVec)
-        {
-            std::cout << "  DSCP value:   0x" << std::hex << static_cast<uint32_t>(p.first) << std::dec
-                      << "  count:   " << p.second << std::endl;
-        }
-    */
 
     Simulator::Stop(Seconds(10.0));
 

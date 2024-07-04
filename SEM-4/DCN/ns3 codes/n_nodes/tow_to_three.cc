@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
     }
 
     NodeContainer nodes;
-    // ---------> 2 to 3
+    // 1---------> 2 to 3
     nodes.Create(3);
 
     PointToPointHelper pointToPoint;
@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
     NetDeviceContainer devices12;
     devices12 = pointToPoint.Install(nodes.Get(1), nodes.Get(2));
 
-    // 1---------------- above 2 lines added
+    // 2---------------- above 2 lines added
 
     InternetStackHelper stack;
     stack.Install(nodes);
@@ -155,7 +155,7 @@ int main(int argc, char *argv[])
         queue->TraceConnectWithoutContext("PacketsInQueue", MakeCallback(&DevicePacketsInQueueTrace));
     */
 
-    // 2------------------------------------->commented lines
+    // 3------------------------------------->commented lines
 
     Ipv4AddressHelper address01;
     Ipv4AddressHelper address12;
@@ -168,9 +168,8 @@ int main(int argc, char *argv[])
     Ipv4InterfaceContainer interfaces12 = address12.Assign(devices12);
 
     Ipv4GlobalRoutingHelper::PopulateRoutingTables();
-    // 3------------------> added lines
+    // 4------------------> added line OF ROUTING TABLE
 
-    // 4----------------------------------> flow added
     //  Flow
     uint16_t port = 7;
     Address localAddress(InetSocketAddress(Ipv4Address::GetAny(), port));

@@ -71,8 +71,7 @@ NS_LOG_COMPONENT_DEFINE("TrafficControlExample");
  * \param oldValue Old velue.
  * \param newValue New value.
  */
-void
-TcPacketsInQueueTrace(uint32_t oldValue, uint32_t newValue)
+void TcPacketsInQueueTrace(uint32_t oldValue, uint32_t newValue)
 {
     std::cout << "TcPacketsInQueue " << oldValue << " to " << newValue << std::endl;
 }
@@ -83,8 +82,7 @@ TcPacketsInQueueTrace(uint32_t oldValue, uint32_t newValue)
  * \param oldValue Old velue.
  * \param newValue New value.
  */
-void
-DevicePacketsInQueueTrace(uint32_t oldValue, uint32_t newValue)
+void DevicePacketsInQueueTrace(uint32_t oldValue, uint32_t newValue)
 {
     std::cout << "DevicePacketsInQueue " << oldValue << " to " << newValue << std::endl;
 }
@@ -94,14 +92,12 @@ DevicePacketsInQueueTrace(uint32_t oldValue, uint32_t newValue)
  *
  * \param sojournTime The soujourn time.
  */
-void
-SojournTimeTrace(Time sojournTime)
+void SojournTimeTrace(Time sojournTime)
 {
     std::cout << "Sojourn time " << sojournTime.ToDouble(Time::MS) << "ms" << std::endl;
 }
 
-int
-main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     double simulationTime = 10; // seconds
     std::string transportProt = "Tcp";
@@ -122,7 +118,7 @@ main(int argc, char* argv[])
 
     NodeContainer nodes;
 
-//1(2 -> 4)
+    // 1(2 -> 4)
     nodes.Create(4);
 
     PointToPointHelper pointToPoint;
@@ -130,23 +126,23 @@ main(int argc, char* argv[])
     pointToPoint.SetChannelAttribute("Delay", StringValue("2ms"));
     pointToPoint.SetQueue("ns3::DropTailQueue", "MaxSize", StringValue("1p"));
 
-//2(copy and duplicate below 2 lines and make the changes as shown in next 6 lines)
-    //NetDeviceContainer devices;
-    //devices = pointToPoint.Install(nodes);
-    
+    // 2(copy and duplicate below 2 lines and make the changes as shown in next 6 lines)
+    // NetDeviceContainer devices;
+    // devices = pointToPoint.Install(nodes);
+
     NetDeviceContainer devices01;
-    devices01 = pointToPoint.Install(nodes.Get(0),nodes.Get(1));
+    devices01 = pointToPoint.Install(nodes.Get(0), nodes.Get(1));
 
     NetDeviceContainer devices12;
-    devices12 = pointToPoint.Install(nodes.Get(1),nodes.Get(2));
-    
+    devices12 = pointToPoint.Install(nodes.Get(1), nodes.Get(2));
+
     NetDeviceContainer devices23;
-    devices23 = pointToPoint.Install(nodes.Get(2),nodes.Get(3));
+    devices23 = pointToPoint.Install(nodes.Get(2), nodes.Get(3));
 
     InternetStackHelper stack;
     stack.Install(nodes);
 
-//3(comment below part)
+    // 3(comment below part)
     /*TrafficControlHelper tch;
     tch.SetRootQueueDisc("ns3::RedQueueDisc");
     QueueDiscContainer qdiscs = tch.Install(devices);
@@ -163,9 +159,9 @@ main(int argc, char* argv[])
     queue->TraceConnectWithoutContext("PacketsInQueue", MakeCallback(&DevicePacketsInQueueTrace));
 */
 
-//4( copy and duplicate below 2 lines and make the changes as shown in next 4 lines)
-    // Ipv4AddressHelper address;
-    // address.SetBase("10.1.1.0", "255.255.255.0");
+    // 4( copy and duplicate below 2 lines and make the changes as shown in next 4 lines)
+    //  Ipv4AddressHelper address;
+    //  address.SetBase("10.1.1.0", "255.255.255.0");
     Ipv4AddressHelper address01;
     Ipv4AddressHelper address12;
     Ipv4AddressHelper address23;
@@ -173,13 +169,13 @@ main(int argc, char* argv[])
     address12.SetBase("10.1.2.0", "255.255.255.0");
     address23.SetBase("10.1.3.0", "255.255.255.0");
 
-//5(copy and duplicate below line and make the changes as shown in next 2 lines)
-    //Ipv4InterfaceContainer interfaces = address.Assign(devices);
+    // 5(copy and duplicate below line and make the changes as shown in next 2 lines)
+    // Ipv4InterfaceContainer interfaces = address.Assign(devices);
     Ipv4InterfaceContainer interfaces01 = address01.Assign(devices01);
     Ipv4InterfaceContainer interfaces12 = address12.Assign(devices12);
     Ipv4InterfaceContainer interfaces23 = address23.Assign(devices23);
-    
-//6(add line 173 from third.cc) 
+
+    // 6(add line 173 from third.cc)
     Ipv4GlobalRoutingHelper::PopulateRoutingTables();
 
     // Flow
@@ -187,7 +183,7 @@ main(int argc, char* argv[])
     Address localAddress(InetSocketAddress(Ipv4Address::GetAny(), port));
     PacketSinkHelper packetSinkHelper(socketType, localAddress);
 
-//7( 0 to 2)
+    // 7( 0 to 3)
     ApplicationContainer sinkApp = packetSinkHelper.Install(nodes.Get(3));
 
     sinkApp.Start(Seconds(0.0));
@@ -203,14 +199,14 @@ main(int argc, char* argv[])
     onoff.SetAttribute("DataRate", StringValue("50Mbps")); // bit/s
     ApplicationContainer apps;
 
-//8( make the change to below line as shown in next line)
-    //InetSocketAddress rmt(interfaces.GetAddress(0), port);
+    // 8( make the change to below line as shown in next line)
+    // InetSocketAddress rmt(interfaces.GetAddress(0), port);
     InetSocketAddress rmt(interfaces23.GetAddress(1), port);
     rmt.SetTos(0xb8);
     AddressValue remoteAddress(rmt);
     onoff.SetAttribute("Remote", remoteAddress);
 
-//9( 1 -> 0)
+    // 9( 1 -> 0)
     apps.Add(onoff.Install(nodes.Get(0)));
     apps.Start(Seconds(1.0));
     apps.Stop(Seconds(simulationTime + 0.1));
@@ -223,17 +219,18 @@ main(int argc, char* argv[])
 
     Ptr<Ipv4FlowClassifier> classifier = DynamicCast<Ipv4FlowClassifier>(flowmon.GetClassifier());
     std::map<FlowId, FlowMonitor::FlowStats> stats = monitor->GetFlowStats();
-    std::cout << std::endl << "*** Flow monitor statistics ***" << std::endl;
+    std::cout << std::endl
+              << "*** Flow monitor statistics ***" << std::endl;
     std::cout << "  Tx Packets/Bytes:   " << stats[1].txPackets << " / " << stats[1].txBytes
-            << std::endl;
+              << std::endl;
     std::cout << "  Offered Load: "
               << stats[1].txBytes * 8.0 /
-                    (stats[1].timeLastTxPacket.GetSeconds() -
-                    stats[1].timeFirstTxPacket.GetSeconds()) /
-                    1000000
-            << " Mbps" << std::endl;
+                     (stats[1].timeLastTxPacket.GetSeconds() -
+                      stats[1].timeFirstTxPacket.GetSeconds()) /
+                     1000000
+              << " Mbps" << std::endl;
     std::cout << "  Rx Packets/Bytes:   " << stats[1].rxPackets << " / " << stats[1].rxBytes
-            << std::endl;
+              << std::endl;
 
     uint32_t packetsDroppedByQueueDisc = 0;
     uint64_t bytesDroppedByQueueDisc = 0;
@@ -243,7 +240,7 @@ main(int argc, char* argv[])
         bytesDroppedByQueueDisc = stats[1].bytesDropped[Ipv4FlowProbe::DROP_QUEUE_DISC];
     }
     std::cout << "  Packets/Bytes Dropped by Queue Disc:   " << packetsDroppedByQueueDisc << " / "
-            << bytesDroppedByQueueDisc << std::endl;
+              << bytesDroppedByQueueDisc << std::endl;
     uint32_t packetsDroppedByNetDevice = 0;
     uint64_t bytesDroppedByNetDevice = 0;
     if (stats[1].packetsDropped.size() > Ipv4FlowProbe::DROP_QUEUE)
@@ -252,35 +249,37 @@ main(int argc, char* argv[])
         bytesDroppedByNetDevice = stats[1].bytesDropped[Ipv4FlowProbe::DROP_QUEUE];
     }
     std::cout << "  Packets/Bytes Dropped by NetDevice:   " << packetsDroppedByNetDevice << " / "
-            << bytesDroppedByNetDevice << std::endl;
+              << bytesDroppedByNetDevice << std::endl;
     std::cout << "  Throughput: "
               << stats[1].rxBytes * 8.0 /
-                    (stats[1].timeLastRxPacket.GetSeconds() -
-                    stats[1].timeFirstRxPacket.GetSeconds()) /
-                    1000000
-            << " Mbps" << std::endl;
+                     (stats[1].timeLastRxPacket.GetSeconds() -
+                      stats[1].timeFirstRxPacket.GetSeconds()) /
+                     1000000
+              << " Mbps" << std::endl;
     std::cout << "  Mean delay:   " << stats[1].delaySum.GetSeconds() / stats[1].rxPackets
-            << std::endl;
+              << std::endl;
     std::cout << "  Mean jitter:   " << stats[1].jitterSum.GetSeconds() / (stats[1].rxPackets - 1)
-            << std::endl;
+              << std::endl;
     auto dscpVec = classifier->GetDscpCounts(1);
     for (auto p : dscpVec)
     {
         std::cout << "  DSCP value:   0x" << std::hex << static_cast<uint32_t>(p.first) << std::dec
-                << "  count:   " << p.second << std::endl;
+                  << "  count:   " << p.second << std::endl;
     }
 
     Simulator::Destroy();
 
-    std::cout << std::endl << "*** Application statistics ***" << std::endl;
+    std::cout << std::endl
+              << "*** Application statistics ***" << std::endl;
     double thr = 0;
     uint64_t totalPacketsThr = DynamicCast<PacketSink>(sinkApp.Get(0))->GetTotalRx();
     thr = totalPacketsThr * 8 / (simulationTime * 1000000.0); // Mbit/s
     std::cout << "  Rx Bytes: " << totalPacketsThr << std::endl;
     std::cout << "  Average Goodput: " << thr << " Mbit/s" << std::endl;
-    std::cout << std::endl << "*** TC Layer statistics ***" << std::endl;
+    std::cout << std::endl
+              << "*** TC Layer statistics ***" << std::endl;
 
-//10( comment below line)
-    //std::cout << q->GetStats() << std::endl;
+    // 10( comment below line)
+    // std::cout << q->GetStats() << std::endl;
     return 0;
 }
