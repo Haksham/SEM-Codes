@@ -1,7 +1,7 @@
 import java.net.*;
 import java.io.*;
 
-// Change the ip addres to yout pc id 
+// Change the ip addres to yout pc ip
 // Goto new terminal -> enter "ifconfig" -> under "enp3o or eno1" -> "inet" -> check the ip just after inet (ex. 172.1.31.177)
 // No changes in Port
 
