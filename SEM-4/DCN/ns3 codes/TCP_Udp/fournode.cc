@@ -94,17 +94,17 @@ int main(int argc, char *argv[])
   devices = pointToPoint.Install(nodes.Get(1), nodes.Get(2));
   address.SetBase("10.1.2.0", "255.255.255.0");
   interfaces = address.Assign(devices);
-
+//copied
   Ipv4AddressHelper address1;
-  address.SetBase("10.1.3.0", "255.255.255.0");
+  address1.SetBase("10.1.3.0", "255.255.255.0");
 
   NetDeviceContainer devices1;
   devices1 = pointToPoint.Install(nodes.Get(3), nodes.Get(1));
-  Ipv4InterfaceContainer interfaces1 = address.Assign(devices1);
+  Ipv4InterfaceContainer interfaces1 = address1.Assign(devices1);
 
   devices1 = pointToPoint.Install(nodes.Get(1), nodes.Get(2));
-  address.SetBase("10.1.4.0", "255.255.255.0");
-  interfaces1 = address.Assign(devices1);
+  address1.SetBase("10.1.4.0", "255.255.255.0");
+  interfaces1 = address1.Assign(devices1);
 
   Ipv4GlobalRoutingHelper::PopulateRoutingTables();
 
