@@ -1,4 +1,4 @@
-; 3.	Write a program to illustrate ASR and LSLS instruction.
+; 3.Write a program to illustrate ASR and LSLS instruction.
 
   PRESERVE8
       THUMB
@@ -20,4 +20,4 @@ __main
   LSLS r0,r2,#05                    ;0xFFFFFF00
 
 stop B stop
-   END
+  END

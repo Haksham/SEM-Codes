@@ -1,7 +1,7 @@
-; 5.	Write a program to clear and extract the bits with starting position P and width of the bits W.
+; 5.Write a program to clear and extract the bits with starting position P and width of the bits W.
 
-  PRESERVE8      
-    THUMB    
+  PRESERVE8
+    THUMB
       AREA |.text|, CODE, READONLY
     EXPORT __main
 

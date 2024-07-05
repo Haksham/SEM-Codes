@@ -1,11 +1,11 @@
-; 1.	Use Labels to calculate the sum of say 10 numbers.
+; 1.Use Labels to calculate the sum of say 10 numbers.
 
      
-	PRESERVE8     
-			THUMB 
+	PRESERVE8
+			THUMB
 		AREA |.text|, CODE, READONLY
-	EXPORT __main			 
-              
+	EXPORT __main
+
 __main
 	LDR r0,=DataIn            ; Get the address of variable 'DataIn'
 	MOVS r1, #10              ; loop counter
