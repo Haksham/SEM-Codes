@@ -1,4 +1,4 @@
-// 6.	Write a program to use switch case.
+; 6.	Write a program to use switch case.
 
 	PRESERVE8     
 			THUMB 

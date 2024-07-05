@@ -1,4 +1,4 @@
-// 4.	Write a program to illustrate the processing of data in a stack and realizing of stack using another file say (processing x to read 2x+9).
+; 4.	Write a program to illustrate the processing of data in a stack and realizing of stack using another file say (processing x to read 2x+9).
 
 
 // file 1

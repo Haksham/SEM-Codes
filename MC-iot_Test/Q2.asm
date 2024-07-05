@@ -1,4 +1,4 @@
-// 2.	Write an Assembly level program to copy multiple data at a time say 128 bytes of data in two iterations.
+; 2.	Write an Assembly level program to copy multiple data at a time say 128 bytes of data in two iterations.
 
 
 	PRESERVE8
