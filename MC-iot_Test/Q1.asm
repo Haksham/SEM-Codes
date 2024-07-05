@@ -1,4 +1,4 @@
-// 1.	Use Labels to calculate the sum of say 10 numbers.
+; 1.	Use Labels to calculate the sum of say 10 numbers.
 
      
 	PRESERVE8     
