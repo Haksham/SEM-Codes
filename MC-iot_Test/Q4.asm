@@ -21,24 +21,14 @@ stop B stop
     THUMB
       AREA |.text|, CODE, READONLY
     EXPORT func
-    EXTERN func2
 
 func
-	push{LR}
-	MOVS R1,#08
-	BL func2
-	pop{PC}
-  END
-
-
-// file 3
-
-  PRESERVE8
-    THUMB
-      AREA |.text|, CODE, READONLY
-    EXPORT func2
-	
-func2
-	MOVS r2,#08
-	BX LR
+    push{r0}
+    LDR r1,[r13]
+    MOVS r3,#2
+    MULS r1,r3,r1
+    ADDS r1,r1,#9
+    STR r1,[r13]
+    POP{r2}
+    BX LR
   END
