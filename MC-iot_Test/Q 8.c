@@ -9,6 +9,7 @@
 int main(void)
 {
   Initial_panel();
+  clr_all_panel();
   print_lcd(0, "Text 1");
   print_lcd(1, "Text 2");
   print_lcd(2, "Text 3");
