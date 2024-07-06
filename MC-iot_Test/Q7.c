@@ -22,14 +22,7 @@ void Init_LED() // Initialize GPIO pins
 
 int main(void)
 {
-	UNLOCKREG();					 // unlock register for programming
-	DrvSYS_Open(48000000); // set System Clock to run at 48MHz
-												 // 12MHz crystal input, PLL output 48MHz
-	LOCKREG();						 // lock register from programming
-
-	Init_LED(); // Initialize LEDs (four on-board LEDs below LCD panel)
-
-	while (1) // forever loop to keep flashing four LEDs one at a time
+		while (1) // forever loop to keep flashing four LEDs one at a time
 	{
 		DrvGPIO_ClrBit(E_GPC, 15); // output Low to turn on LED
 		DrvSYS_Delay(300000);			 // delay
