@@ -11,4 +11,4 @@ https://drive.google.com/file/d/1uRSlmbidQHTUKVSrCZj3vS7IELh1IlsV/view
 
 Complete Raspberry-PI : https://drive.google.com/drive/folders/1ticVyE-YZZPtJQ1NSKHXXJM1AOWad4LO
 
-Special Thanks to [B.Karthik](github.com/BKarthik7), [Mitesh](www.github.com/MiteshJain8) ,[Nikhil](www.github.com/NikhilKalloli) , [Ifrah](www.github.com/ifrahnz26) !
+Special Thanks to [B.Karthik](https://github.com/BKarthik7), [Mitesh](https://github.com/MiteshJain8) ,[Nikhil](https://github.com/NikhilKalloli) , [Ifrah](https://github.com/ifrahnz26) !
