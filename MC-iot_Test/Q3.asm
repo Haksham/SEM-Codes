@@ -6,11 +6,11 @@
   EXPORT __main
 
 __main
-  LDR r2,=0x00000080;
-  ASRS r0,r2,#04                    ;00000001000
+  LDR r1,=0x00000080;
+  ASRS r1,r1,#04                    ;00000001000
   
   LDR r2,=0x00000080;
-  LSLS r0,r2,#04                    ;0x00000800
+  LSLS r2,r2,#04                    ;0x00000800
   
 stop B stop
   END
