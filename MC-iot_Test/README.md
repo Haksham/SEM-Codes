@@ -10,3 +10,5 @@ Refer video for Raspberry Pi setup: https://drive.google.com/file/d/1wfP-mo-uluT
                                     https://drive.google.com/file/d/1uRSlmbidQHTUKVSrCZj3vS7IELh1IlsV/view
 
 Complete Raspberry-PI : https://drive.google.com/drive/folders/1ticVyE-YZZPtJQ1NSKHXXJM1AOWad4LO
+
+Special Thanks to B.Karthik, Mitesh ,Nikhil , Ifrah ! 
