@@ -15,4 +15,4 @@ Complete Raspberry-PI setup videos: https://drive.google.com/drive/folders/1ticV
 
 nu140 Folder download drive: https://drive.google.com/drive/folders/1oQTb-bw7KN1UkIu2rEWpJqQ76-Gaei4-?usp=sharing
 
-Special Thanks to [B.Karthik](https://github.com/BKarthik7), [Mitesh](https://github.com/MiteshJain8) , [Nikhil](https://github.com/NikhilKalloli) , [Ifrah](https://github.com/ifrahnz26) !
+Special Thanks to [B.Karthik](https://github.com/BKarthik7), [Mitesh](https://github.com/MiteshJain8) , [Nikhil](https://github.com/NikhilKalloli), [Ifrah](https://github.com/ifrahnz26) !
