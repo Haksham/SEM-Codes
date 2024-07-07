@@ -4,10 +4,10 @@
 // file 1
 
   PRESERVE8
-    THUMB
-      AREA |.text|, CODE, READONLY
-    EXPORT __main 
-    EXTERN func
+  THUMB
+  AREA |.text|, CODE, READONLY
+  EXPORT __main 
+  EXTERN func
 __main
 	LDR r0,=0x10
  BL func
@@ -18,9 +18,9 @@ stop B stop
 // file 2
 
   PRESERVE8
-    THUMB
-      AREA |.text|, CODE, READONLY
-    EXPORT func
+  THUMB
+  AREA |.text|, CODE, READONLY
+  EXPORT func
 
 func
     push{r0}

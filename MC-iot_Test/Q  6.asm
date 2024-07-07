@@ -1,10 +1,9 @@
 ; 6.	Write a program to use switch case.
-
-	PRESERVE8
-			THUMB
-		AREA|.text|, CODE, READONLY
-	EXPORT __main
-
+  PRESERVE8
+  THUMB 
+  AREA |.text|, CODE, READONLY
+  EXPORT __main
+  
 __main
   LDR R0, =0
   CMP R0, #3                                ; Compare input to maximum valid choice
@@ -14,7 +13,7 @@ __main
   LDR R1, =BranchTable                      ; Get base address of branch table(0x284)
   LDR R2,[R1,R0]                            ; Get the actual branch destination 
   BX R2                                     ; Branch to destination 
-ALIGN 4                                     ; Alignment control. The table has
+  ALIGN 4                                     ; Alignment control. The table has
 BranchTable                                 ; to be word aligned to prevent unaligned read 
   DCD Dest0                                 ;table of each destination address
   DCD Dest1

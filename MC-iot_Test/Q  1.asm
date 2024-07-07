@@ -1,8 +1,8 @@
 ; 1.Use Labels to calculate the sum of say 10 numbers.
 
 	PRESERVE8
-			THUMB
-		AREA |.text|, CODE, READONLY
+	THUMB
+	AREA |.text|, CODE, READONLY
 	EXPORT __main
 
 DataIn EQU 0x20000000

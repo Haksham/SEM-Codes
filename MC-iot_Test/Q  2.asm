@@ -2,8 +2,8 @@
 
 
 	PRESERVE8
-      THUMB 
-    AREA |.text|, CODE, READONLY
+  THUMB 
+  AREA |.text|, CODE, READONLY
   EXPORT __main
 
 __main

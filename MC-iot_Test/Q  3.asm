@@ -1,8 +1,8 @@
 ; 3.Write a program to illustrate ASR and LSLS instruction.
 
   PRESERVE8
-      THUMB
-    AREA |.text|, CODE, READONLY
+  THUMB
+  AREA |.text|, CODE, READONLY
   EXPORT __main
 
 __main
