@@ -10,7 +10,7 @@
   EXTERN func
 __main
 	LDR r0,=0x10
- BL func
+  BL func
 stop B stop
   END
 
