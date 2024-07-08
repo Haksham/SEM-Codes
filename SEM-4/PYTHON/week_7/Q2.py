@@ -14,7 +14,6 @@ try:
         print(ls[9])
     except IndexError:
         print("index issue")
-    print(k)
 except KeyError:
     print("key issue")
 else:
