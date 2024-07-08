@@ -1,4 +1,4 @@
-Starting of Lab startup and download process: https://github.com/Haksham/SEM-Codes/blob/master/MC-iot_Test/MC_Iot_lab_startup.pdf
+Starting of Lab startup and download process: https://github.com/Haksham/SEM-Codes/blob/master/SEM-4/MC-IOT/MC-iot_Test/MC_Iot_lab_startup.pdf
 
 Refer video for accessing Keil startup: https://youtu.be/YSlkYs4NAzU?si=RZrJUMQkFCy58SFR
 
