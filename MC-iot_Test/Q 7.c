@@ -7,7 +7,6 @@
 
 int main(void)
 {
-	clr_all_panel();
 	while (1) // forever loop to keep flashing four LEDs one at a time
 	{
 		DrvGPIO_ClrBit(E_GPC, 15); // output Low to turn on LED
