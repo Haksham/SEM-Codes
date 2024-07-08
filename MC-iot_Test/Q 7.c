@@ -5,24 +5,10 @@
 #include "Driver\DrvSYS.h"
 #include "Driver\DrvGPIO.h"
 
-void Init_LED() // Initialize GPIO pins
-{
-	DrvGPIO_Open(E_GPC, 15, E_IO_OUTPUT); // GPC12 pin set to output mode
-	DrvGPIO_SetBit(E_GPC, 15);						// Goutput Hi to turn off LED
-
-	DrvGPIO_Open(E_GPC, 14, E_IO_OUTPUT); // GPC12 pin set to output mode
-	DrvGPIO_SetBit(E_GPC, 14);
-
-	DrvGPIO_Open(E_GPC, 13, E_IO_OUTPUT); // GPC12 pin set to output mode
-	DrvGPIO_SetBit(E_GPC, 13);
-	
-	DrvGPIO_Open(E_GPC, 12, E_IO_OUTPUT); // GPC12 pin set to output mode
-	DrvGPIO_SetBit(E_GPC, 12);
-}
-
 int main(void)
 {
-		while (1) // forever loop to keep flashing four LEDs one at a time
+	clr_all_panel();
+	while (1) // forever loop to keep flashing four LEDs one at a time
 	{
 		DrvGPIO_ClrBit(E_GPC, 15); // output Low to turn on LED
 		DrvSYS_Delay(300000);			 // delay
