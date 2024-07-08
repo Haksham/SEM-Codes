@@ -13,20 +13,6 @@ void seg_display(int16_t value)
 {
   int8_t digit;
 
-  digit = value / 1000;
-  close_seven_segment();
-  show_seven_segment(3, digit);
-  DrvSYS_Delay(5000);
-
-  value = value - digit * 1000;
-
-  digit = value / 100;
-  close_seven_segment();
-  show_seven_segment(2, digit);
-  DrvSYS_Delay(5000);
-
-  value = value - digit * 100;
-
   digit = value / 10;
   close_seven_segment();
   show_seven_segment(1, digit);
@@ -42,22 +28,11 @@ void seg_display(int16_t value)
 
 int32_t main(void)
 {
-  int val;
-  val = 0000;
-
-  while (1)
+  int value=0;
+  while(1)
   {
-    DrvSYS_Delay(500);
-    val = val++;
-    seg_display(val);
-    if (val == 99)
-    {
-      close_seven_segment();
-      show_seven_segment(0, 9);
-      show_seven_segment(1, 9);
-      break;
-    }
+    DrvSYS_Delay(5000);
+    value = (value+1)%100;
+    seg_display(value);
   }
 }
-
-// 7 segment ends with 99 on LCD display
