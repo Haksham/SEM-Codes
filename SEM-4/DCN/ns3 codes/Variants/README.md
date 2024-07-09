@@ -1,7 +1,8 @@
-To get the <kbd> **tcp-variants-comparision.cc** </kbd> file , goto: 
-<kbd>**Examples** </kbd> folder in <kbd> **ns-3.39** </kbd> folder-> <kbd> **tcp** </kbd> folder-> <kbd> **tcp-variants-comparison.cc** </kbd>  file.
+To get the <kbd> **tcp-variants-comparision.cc** </kbd> file , goto:
+<kbd>**Examples** </kbd> folder in <kbd> **ns-3.39** </kbd> folder-> <kbd> **tcp** </kbd> folder-> <kbd> **tcp-variants-comparison.cc** </kbd> file.
 
 Basefile: **tcp-variants-comparision.cc**
+
 Final file: **final.cc**
 
 Steps:
@@ -18,13 +19,13 @@ Steps:
 
 4. Use the data from those file to plot graph in xls file :
 
-   1) Select all data from **.cc** file copy (**ctrl+a** then **ctrl+c**) and open new .xls file.
-   2) Paste whole data (**ctrl+v**) to .xls file.
-   3) Select <kbd> space </kbd>option in appeared window -> **ok**
-   
+   1. Select all data from **.cc** file copy (**ctrl+a** then **ctrl+c**) and open new .xls file.
+   2. Paste whole data (**ctrl+v**) to .xls file.
+   3. Select <kbd> space </kbd>option in appeared window -> **ok**
+
    ![](img/space.jpg)
 
-   4) Select both Columns **A** and **B** --> click on <kbd> insert chart </kbd> icon --> <kbd>Lines</kbd> --> Choose any graph --><kbd>Finish</kbd>
+   4. Select both Columns **A** and **B** --> click on <kbd> insert chart </kbd> icon --> <kbd>Lines</kbd> --> Choose any graph --><kbd>Finish</kbd>
 
    ![](img/select.jpg)
    ![](img/graph.jpg)
