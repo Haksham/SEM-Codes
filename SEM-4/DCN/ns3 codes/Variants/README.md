@@ -18,5 +18,10 @@ Steps:
    1) Select all data from **.cc** file copy (**ctrl+a** then **ctrl+c**) and open new .xls file.
    2) Paste whole data (**ctrl+v**) to .xls file.
    3) Select <kbd> space </kbd>option in appeared window -> **ok**
-   ![](space.jpg)
+   
+   ![](space-2.jpg)
+   
    4) Select both Columns **A** and **B** --> click on <kbd> insert chart </kbd> icon --> <kbd>Lines</kbd> --> Choose any graph --><kbd>Finish</kbd>
+
+   ![](select.jpg)
+   ![](graph.jpg)
