@@ -19,9 +19,9 @@ Steps:
    2) Paste whole data (**ctrl+v**) to .xls file.
    3) Select <kbd> space </kbd>option in appeared window -> **ok**
    
-   ![](space-2.jpg)
-   
+   ![](img/space.jpg)
+
    4) Select both Columns **A** and **B** --> click on <kbd> insert chart </kbd> icon --> <kbd>Lines</kbd> --> Choose any graph --><kbd>Finish</kbd>
 
-   ![](select.jpg)
-   ![](graph.jpg)
+   ![](img/select.jpg)
+   ![](img/graph.jpg)
