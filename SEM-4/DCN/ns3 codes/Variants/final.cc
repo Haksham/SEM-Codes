@@ -341,7 +341,7 @@ TraceNextRx(std::string& next_rx_seq_file_name, uint32_t nodeId)
 
 int
 main(int argc, char* argv[])
-{//1-------------------->TcpWestwoodPlus to TcpNewReno/TcpWestwoodPlus/+2 graphs
+{//1-------------------->TcpWestwoodPlus to "TcpNewReno" or "TcpWestwoodPlus" with 2 graphs each in .xls file.
     std::string transport_prot = "TcpNewReno";
     double error_p = 0.0;
     std::string bandwidth = "2Mbps";
