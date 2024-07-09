@@ -1,4 +1,4 @@
-package crc;
+package CRC;
 
 import java.util.Scanner;
 
@@ -42,27 +42,29 @@ public class CRC {
   }
 
   public static void main(String[] args) {
-    Scanner s = new Scanner(System.in);
-    System.out.println("Using CRC-CCITT");
-    String generator = "10001000000100001";
-    while (true) {
-      System.out.println("1. Generate codeword");
-      System.out.println("2. Check data");
-      int input = s.nextInt();
-      switch (input) {
-        case 1:
-          System.out.print("Enter dataword: ");
-          String dataword = s.next();
-          System.out.println("Codeword: " + generate(dataword, generator));
-          break;
-        case 2:
-          System.out.print("Enter codeword: ");
-          String codeword = s.next();
-          if (checkCodeWord(codeword, generator)) {
-            System.out.println("No Error");
-          } else {
-            System.out.println("Error");
-          }
+    try (Scanner s = new Scanner(System.in)) 
+    {
+      System.out.println("Using CRC-CCITT");
+      String generator = "10001000000100001";
+      while (true) {
+        System.out.println("1. Generate codeword");
+        System.out.println("2. Check data");
+        int input = s.nextInt();
+        switch (input) {
+          case 1:
+            System.out.print("Enter dataword: ");
+            String dataword = s.next();
+            System.out.println("Codeword: " + generate(dataword, generator));
+            break;
+          case 2:
+            System.out.print("Enter codeword: ");
+            String codeword = s.next();
+            if (checkCodeWord(codeword, generator)) {
+              System.out.println("No Error");
+            } else {
+              System.out.println("Error");
+            }
+        }
       }
     }
   }
