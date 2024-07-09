@@ -1,6 +1,9 @@
 To get the <kbd> **tcp-variants-comparision.cc** </kbd> file , goto: 
 <kbd>**Examples** </kbd> folder in <kbd> **ns-3.39** </kbd> folder-> <kbd> **tcp** </kbd> folder-> <kbd> **tcp-variants-comparison.cc** </kbd>  file.
 
+Basefile: **tcp-variants-comparision.cc**
+Final file: **final.cc**
+
 Steps:
 
 1. Copy the file and paste in <kbd> **scratch** </kbd> folder and rename it to <kbd> **final.cc** </kbd>
