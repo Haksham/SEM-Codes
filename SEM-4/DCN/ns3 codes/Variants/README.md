@@ -9,7 +9,7 @@ Steps:
 
    In line number <u>345<u> of <kbd> final.cc </kbd> change " TcpWestwoodPlus " to " TcpNewReno " or " TcpWestwoodPlus ".
 
-   in line <u>354<u> of <kbd> final.cc </kbd> , set <u> bool tracing <u> = <kbd> false <kbd> to <kbd> true </kbd>.
+   in line <u>354<u> of <kbd> final.cc </kbd> , set <u> bool tracing <u> = <kbd> false </kbd> to <kbd> true </kbd>.
 
 3. Then check the <kbd> scratch </kbd>folder again , you will find 2 new files as <kbd> TcpVariantsComparison-cwnd.data </kbd> and <kbd> TcpVariantsComparison-rtt.data </kbd>.
 
