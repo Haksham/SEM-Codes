@@ -13,4 +13,10 @@ Steps:
 
 3. Then check the <kbd> **scratch** </kbd>folder again , you will find 2 new files as <kbd> TcpVariantsComparison-cwnd.data </kbd> and <kbd> **TcpVariantsComparison-rtt.data** </kbd>.
 
-4. Use the data from those file to plot graph in xls file.
+4. Use the data from those file to plot graph in xls file :
+
+   1) Select all data from **.cc** file copy (**ctrl+a** then **ctrl+c**) and open new .xls file.
+   2) Paste whole data (**ctrl+v**) to .xls file.
+   3) Select <kbd> space </kbd>option in appeared window -> **ok**
+   ![](space.jpg)
+   4) Select both Columns **A** and **B** --> click on <kbd> insert chart </kbd> icon --> <kbd>Lines</kbd> --> Choose any graph --><kbd>Finish</kbd>
