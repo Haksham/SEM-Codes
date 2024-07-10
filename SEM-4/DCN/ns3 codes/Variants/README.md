@@ -15,7 +15,9 @@ Steps:
    In line number <ins>**345**</ins> of <kbd> **final.cc** </kbd> change "**TcpWestwoodPlus**" to " **TcpNewReno** " or " **TcpWestwoodPlus** ".
 
    in line <ins>**354**</ins> of <kbd> final.cc </kbd> , set <ins> **bool tracing** </ins> = <kbd> **false** </kbd> to <kbd> **true** </kbd>.
+
 run the file: ./ns3 run final
+
 Note: no need of --vis here.
 
 3. Then check the <kbd> **scratch** </kbd>folder again , you will find 2 new files as <kbd> TcpVariantsComparison-cwnd.data </kbd> and <kbd> **TcpVariantsComparison-rtt.data** </kbd>.
