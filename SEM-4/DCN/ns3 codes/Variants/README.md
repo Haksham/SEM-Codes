@@ -16,11 +16,11 @@ Steps:
 
    in line <ins>**354**</ins> of <kbd> final.cc </kbd> , set <ins> **bool tracing** </ins> = <kbd> **false** </kbd> to <kbd> **true** </kbd>.
 
-run the file: ./ns3 run final
+run the file: **./ns3 run final**
 
-Note: no need of --vis here.
+Note: no need of **--vis** here.
 
-3. Then check the <kbd> **scratch** </kbd>folder again , you will find 2 new files as <kbd> TcpVariantsComparison-cwnd.data </kbd> and <kbd> **TcpVariantsComparison-rtt.data** </kbd>.
+3. Then check the <kbd> **scratch** </kbd>folder again , you will find 2 new files as <kbd>** TcpVariantsComparison-cwnd.data** </kbd> and <kbd> **TcpVariantsComparison-rtt.data** </kbd>.
 
 4. Use the data from those file to plot graph in xls file :
 
