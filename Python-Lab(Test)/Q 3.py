@@ -49,12 +49,18 @@ while x!=6:
 
 
 arr=[12,3,5,22,9,0,34,7,34,1,73,99,54]
-print("Maximum number: ",max(arr))
-print("Minimum number: ", min(arr))
+maxim=arr[0]
+minim=arr[0]
+for i in range(len(arr)):
+  if maxim<arr[i]:
+    maxim=arr[i]
+  if minim>arr[i]:
+    minim=arr[i]
+print("Maximum number: ",maxim)
+print("Minimum number: ", minim)
 
-maxs=max(arr)
 max2=arr[0]
 for i in range(len(arr)-1):
-  if maxs>arr[i] and arr[i]>max2:
+  if maxim>arr[i] and arr[i]>max2:
     max2=arr[i]
 print("Second largest number: ", max2)
