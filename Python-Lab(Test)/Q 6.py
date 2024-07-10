@@ -21,8 +21,8 @@ for i in range(n):
     num=int(input("Enter element: "))
     ls.append(num)
 s=int(input("Enter element to search: "))
-x=res=binSearch(ls, 0, len(ls)-1, s)
-print("Element found at position", x)
+res=binSearch(ls, 0, len(ls)-1, s)
+print("Element found at position", res)
 
 
 
