@@ -24,7 +24,7 @@ Note: no need of **--vis** here.
 
 4. Use the data from those file to plot graph in xls file :
 
-   1. Select all data from **.cc** file copy (**ctrl+a** then **ctrl+c**) and open new .xls file.
+   1. Select all data from **.data** file copy (**ctrl+a** then **ctrl+c**) and open new .xls file.
    2. Paste whole data (**ctrl+v**) to .xls file.
    3. Select <kbd> space </kbd>option in appeared window -> **ok**
 
