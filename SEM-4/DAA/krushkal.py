@@ -10,7 +10,7 @@
 #   G[b][a]=k
 # visited=[0 for i in range(n)]
 
-def krushkal(G,visited,n):
+def krushkal(G,visited,n):            # Dont use this code!!
   k=[]
   pair=[]
   sum=0

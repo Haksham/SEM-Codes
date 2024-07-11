@@ -6,7 +6,7 @@ parent=[i for i in range(n)]
 def findP(parent,i):
   if parent[i]==i:
     return i
-  return findP(parent,parent[i])
+  return findP(parent,parent[i])       # Dont use this code!!
 
 def union(parent,rank,x,y):
   if rank[x] < rank[y]:
