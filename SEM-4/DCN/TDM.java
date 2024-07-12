@@ -39,7 +39,7 @@ public class TDM {
         tat[i] = sq;
       }
       if (n == count)
-        break;
+        break;                                      // Main code ends here
     }
     
 
