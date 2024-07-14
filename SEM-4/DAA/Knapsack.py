@@ -20,9 +20,7 @@ res=arr[n][w]
 for i in range(n,0,-1):
     if arr[i][w]!=arr[i-1][w]:
         items.append(ls[i-1])
-        w -= ls[i-1][0]
+        w-=ls[i-1][0]
 
-
-print(arr)
 print("items are: ",items)
 print("Total price: ",res)
