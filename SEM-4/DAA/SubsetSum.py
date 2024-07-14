@@ -14,7 +14,7 @@ def subset(set,sum):
         arr[i][j]=arr[i-1][j]
       else:
         arr[i][j]=arr[i-1][j-set[i-1]]
-  return arr[n][j]
+  return arr[n][sum]
 
 if subset(set,sum):
   print("SubSet exist!")
