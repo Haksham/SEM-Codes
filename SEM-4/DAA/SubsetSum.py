@@ -28,6 +28,6 @@ def subset(set,sum):
 
 arr=subset(set,sum)
 if arr[n][sum]:
-  print("SubSet exist: ")
+  print("SubSet exist!")
 else:
   print("Subset dont exist!")
