@@ -1,6 +1,6 @@
 n=int(input("Enter number of elements: "))
 set=[int(input()) for i in range(n)]
-sum=int(input("ENter the sum: "))
+sum=int(input("Enter the sum: "))
 
 def subset(set,sum):
   n=len(set)
@@ -14,9 +14,20 @@ def subset(set,sum):
         arr[i][j]=arr[i-1][j]
       else:
         arr[i][j]=arr[i-1][j-set[i-1]]
-  return arr[n][sum]
+  return arr
 
-if subset(set,sum):
-  print("SubSet exist!")
+# def items(arr,set,sum):           # not required
+#     res = []
+#     i,j = len(set),sum
+#     while i > 0 and j > 0:
+#         if arr[i][j] != arr[i - 1][j]:
+#             res.append(set[i - 1])
+#             j -= set[i - 1]
+#         i -= 1
+#     return res
+
+arr=subset(set,sum)
+if arr[n][sum]:
+  print("SubSet exist: ")
 else:
   print("Subset dont exist!")
