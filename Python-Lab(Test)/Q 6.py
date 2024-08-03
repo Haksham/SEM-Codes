@@ -48,5 +48,5 @@ class bank:
         finally:print("")
 b1=bank(200)
 b1.withdraw(-22)
-b1.deosit(-100)
+b1.deposit(-100)
 b1.deposit(0)
