@@ -1,4 +1,4 @@
-All my semester codes and project work are uploded here.
+All my semester codes and project work are uploded here (CSE 2022-26).
 
 Previous year papers : https://drive.google.com/drive/folders/1FDy6mEK5kV3Jost-dsjdoZUoTHowq2om
 
