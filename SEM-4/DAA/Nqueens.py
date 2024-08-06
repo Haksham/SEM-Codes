@@ -23,8 +23,9 @@ nd = set()
 pd = set()
 res = []
 B = [['_']*n for i in range(n)]
+
 backtrack(0, n)
 print("Number of ways:",len(res))
-print("\nPossible arrangements:")
+print("Possible arrangements:")
 for r in res:
     print(r)
