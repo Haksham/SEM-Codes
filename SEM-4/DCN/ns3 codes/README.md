@@ -1,27 +1,3 @@
-Download ns3.39
+copy <kbd>traffic-control.cc</kbd>
 
-Extract the tar file in any folder on dektop.
-
-sudo apt-get update --fix-missing
-
-sudo dpkg --configure -a
-
-sudo apt-get install -f
-
-python3 -m pip install --upgrade pip
-
-python3 -m pip install --user cppyy
-
-cd . .
-
-./build.py --enable-examples --enable-tests
-
-cd ns3.39
-
-./ns3 configure --enable-python-bindings
-
-./ns3 configure
-
-./ns3 build
-
-./ns3 run first --vis
+Step by Step video: https://drive.google.com/drive/folders/1UJ2gduB0M2uZa7SOEF1DYxr_gAAh3YzG?usp=sharing
