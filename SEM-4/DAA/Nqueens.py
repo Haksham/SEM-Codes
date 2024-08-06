@@ -3,9 +3,9 @@ def backtrack(r, n):
         res.append([" ".join(i) for i in B])
         return
     for c in range(n):
-        if c in col or (r+c) in pd or (r-c) in nd:
-            continue
-        col.add(c)
+        if c in col or (r+c) in pd or (r-c) in nd:    # nd : negative diagnol
+            continue                                  # pd : positive diagnol
+        col.add(c)                                    # B : Board where queens are placed
         pd.add(r+c)
         nd.add(r-c)
         B[r][c] = 'Q'
