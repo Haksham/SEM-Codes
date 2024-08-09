@@ -1,10 +1,10 @@
 n=int(input("Enter number of elements: "))
-set=[int(input()) for i in range(n)]
+set=[int(input()) for _ in range(n)]
 sum=int(input("Enter the sum: "))
 
 def subset(set,sum):
   n=len(set)
-  arr=[[0 for i in range(sum+1)] for _ in range(n+1)]
+  arr=[[0 for _ in range(sum+1)] for _ in range(n+1)]
 
   for i in range(n+1):                    # main code starts here
     for j in range(sum+1):

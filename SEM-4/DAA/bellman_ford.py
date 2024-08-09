@@ -10,8 +10,7 @@ dist[root]=0
 
 
 def bellman(G,dist,n):
-  l=[]
-  for j in range(n):
+  for _ in range(n):
     for i in G:
       if dist[i[0]]+i[2]<dist[i[1]]:
         dist[i[1]]=dist[i[0]]+i[2]

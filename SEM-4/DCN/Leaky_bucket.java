@@ -11,7 +11,9 @@ public class Leaky_bucket {
       for (i = 1; i <= n; i++)
         a[i] = sc.nextInt();
       System.out.println("Clock \t packet size \t accept \t sent \t remaining");
-      for (i = 1; i <= n; i++) {
+
+
+      for (i = 1; i <= n; i++) {    // main code
         if (a[i] != 0) {
           if (buck_rem + a[i] > buck_cap)
             recv = -1;

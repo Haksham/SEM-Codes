@@ -18,5 +18,5 @@ def quick(arr):
   else:
     return arr
   
-arr=[random.randint(0,100) for i in range(12)]
+arr=[random.randint(0,100) for _ in range(12)]
 print(quick(arr))

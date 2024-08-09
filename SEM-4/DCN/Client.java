@@ -20,7 +20,6 @@ public class Client {
     while ((str = socketRead.readLine()) != null) {
       System.out.println(str);
     }
-    sock.close();
     pwrite.close();
     socketRead.close();
     keyRead.close();
