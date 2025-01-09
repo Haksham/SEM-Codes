@@ -1,0 +1,46 @@
+Q.3	Write a JSP program to retrieve and display Student Information. Create an index.html page to collect the USN (University Serial Number) of the student from the user. In displayData.jsp, connect to the database, and retrieve the student details based on the USN entered by the user. If the USN exists in the database, display the corresponding USN and Name. If the USN does not exist, display the message: "Invalid USN".
+
+----------------------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.io.*" %>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<body>
+
+	<%
+		String url="jdbc:mysql://localhost:3306/dbName",user="root",pass="";
+		String sql="select * from student where usn=?";
+		String usn=request.getParameter("usn");
+		
+		try{
+			Connection conn=DriverManager.getConnection(url,user,pass);
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1,usn);
+			ResultSet rs=ps.executeQuery();
+			
+			if(rs.next()){
+				out.println("USN:"+rs.getString(1)+", name: "+rs.getString(2));
+			}else{
+				out.println("Invalid");
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	%>
+</body>
+</html>
+
+----------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<body>
+    <form action="get.jsp" method="post">
+    	<input type="text" name="usn" placeholder="usn"><br>
+    	<input type="submit" value="submit" ><br>
+    </form>
+</body>
+</html>

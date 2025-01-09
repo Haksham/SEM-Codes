@@ -1,0 +1,32 @@
+Q.10 Develop a JSP application that has the following pages. The index page register.html contains 2 text boxes for entering username and password. Provide a button "Register". Once the Register button is clicked the page should be redirected to welcome.jsp. In welcome.jsp validate username and password and display welcome message for a valid user (Use Sessions).
+
+----------------------------------------------------------------
+
+<html>
+<body>
+    <form action="get.jsp" method="post">
+        <input type="text" name="user" placeholder="Username"><br>
+        <input type="password" name="pass" placeholder="password"><br>
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>
+
+----------------------------------------------------------------
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<html>
+<body>
+  <%
+    String user = request.getParameter("user");
+    String pass = request.getParameter("pass");
+    if (user != null && pass != null && !user.isEmpty() && !pass.isEmpty()) {
+      
+        HttpSession s = request.getSession();
+        s.setAttribute("username", user);
+        
+        out.println("welcome: " + user);
+    } else {out.println("Invalid");}
+	%>
+</body>
+</html>

@@ -1,0 +1,41 @@
+Q.9 Write a JSP program that takes the user’s name and age from a form. Echo back the name and age along with a message stating the price of movie tickets. The price is determined by the age passed to the JSP.
+a.	If the age is greater than 62, the movie ticket price is Rs. 50.
+b.	If the user is less than 10 years old, the price is Rs. 30.
+c.	For everyone else, the price is Rs. 80.
+
+----------------------------------------------------------------
+
+<%@ page import="java.io.*" %>
+<html>
+<body>
+	<%
+    String name = request.getParameter("name");
+    int age = Integer.parseInt(request.getParameter("age"));
+    int price;
+    
+    if (age >= 62) {
+        price = 50;
+    }else if (age <= 10) {
+        price = 30;
+    }else {
+        price = 80;
+    }
+    
+    out.println("Cost: " + price);
+  %>
+</body>
+</html>
+
+----------------------------------------------------------------
+
+<html>
+<body>
+
+    <form action="get.jsp" method="post">
+        <input type="text" name="name" placeholder="name"><br>
+        <input type="text" name="age" placeholder="age"><br>
+        <input type="submit" value="check">
+    </form>
+    
+</body>
+</html>

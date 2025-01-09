@@ -1,0 +1,46 @@
+Q.4	Write a Java Servlet program that loads area and phone no. of police station of that area from a database. It takes phone number ( do validation) as input and prints the details in a separate page. Create police_station table with appropriate fields.
+
+----------------------------------------------------------------
+
+package mypack;
+public class servlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		PrintWriter out = resp.getWriter();
+		
+		String phone = req.getParameter("phone");
+		String url  ="jdbc:mysql://localhost:3306/melt",user = "root",pass = "Hot@22spiceups";
+		String sql = "select * from policestation where number = ?";
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			Connection conn = DriverManager.getConnection(url,user,pass);
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, phone);
+			ResultSet rs = pst.executeQuery();
+			
+			if (rs.next()) {
+				out.println("<p>Number: "+rs.getString("number")+"Area: "+rs.getString("area")+"</p>");
+				}
+			else {
+				out.println("<p>Invalid!</p>");
+			}
+		}catch(Exception e) {}
+	}
+}
+
+
+----------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<body>
+    <form action = "servlet" method = "post">
+		<input type = "text" name = "phone" placeholder="number"><br>
+		<input type = "submit" value = "Submit">
+	</form>
+</body>
+</html>

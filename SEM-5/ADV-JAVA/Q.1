@@ -1,0 +1,37 @@
+Q.1	Write a Java Servlet program that reads following information -> Employee’s name, number of hours worked in week, hourly pay rate, tax (20%) from the user and prints a statement of payroll with employee’s details.
+
+
+----------------------------------------------------------------
+<html>
+<body>
+	<form action="serv" method="post">
+		<input name="name" type="text" placeholder="name"><br>
+		<input name="hrs" type="number" placeholder="hrs"><br>
+		<input name="rate" type="number" placeholder="rate"><br>
+		<input type="submit" value="submit"><br>
+	</form>
+</body>
+</html>
+
+----------------------------------------------------------------
+
+package mypack;
+
+public class serv extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String name= request.getParameter("name");
+		String hrs= request.getParameter("hrs");
+		String rate= request.getParameter("rate");
+		
+		int rates= Integer.parseInt(rate);
+		int hrss= Integer.parseInt(hrs);
+		Double salary= rates*hrss + rates*hrss*0.2 ;
+		
+		PrintWriter out = response.getWriter();
+		out.println("<h1>"+name+": salary "+salary+"</h1>");
+		
+	}
+}

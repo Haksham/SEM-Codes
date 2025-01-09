@@ -1,0 +1,41 @@
+Q.6,7	Write a Java servlet program to create 4 cookies. Set 2 cookies with 1 minute of expiry date. Display all the cookies when the servlet is loaded for the first time. Refresh the page and display the remaining 2 cookies.
+
+----------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<body>
+    <form action="servlet" method="post">
+        <input type="submit" value="Create and View Cookies">
+    </form>
+</body>
+</html>
+
+----------------------------------------------------------------
+
+package mypack;
+public class servlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		PrintWriter out = response.getWriter();
+    Cookie c1 = new Cookie("c1", "v1");
+    Cookie c2 = new Cookie("c2", "v2");
+    Cookie c3 = new Cookie("c3", "v3");
+    Cookie c4 = new Cookie("c4", "v4");
+
+    c1.setMaxAge(60);
+    c2.setMaxAge(60); 
+
+    response.addCookie(c1);
+    response.addCookie(c2);
+    response.addCookie(c3);
+    response.addCookie(c4);
+    
+    Cookie[] cookies = request.getCookies();
+    for (Cookie cookie : cookies) {
+        out.println("<p>" + cookie.getName() + ": " + cookie.getValue() + "</p>");
+    }
+  }
+}

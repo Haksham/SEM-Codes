@@ -1,0 +1,35 @@
+Q.8	Write a Java Servlet program to display how many times a visitor is visiting the webpage using session object. If the user is visiting for the first time, display Welcome message, else display the number of times he is visiting the page.
+
+----------------------------------------------------------------
+
+package mypack;
+
+public class servlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    PrintWriter out = response.getWriter();
+    HttpSession session = request.getSession();
+    Integer count = (Integer) session.getAttribute("");
+    
+    if (count == null) {
+      count = 1;
+        out.println("<p>1st time.</p>");
+    } else {
+      count++;
+        out.println("<p>Count: " + count + "</p>");
+    }
+    
+    session.setAttribute("",count);
+  }
+}
+
+----------------------------------------------------------------
+
+<html>
+<body>
+    <form action="servlet" method="post">
+        <input type="submit" value="count">
+    </form>
+</body>
+</html>

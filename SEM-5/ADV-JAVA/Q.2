@@ -1,0 +1,51 @@
+Q.2	Create and store three cookies with different attributes (such as name, value, expiration time, etc.). Retrieve and display the stored cookies using a second JSP program, extracting their names, values, and any additional attributes
+
+----------------------------------------------------------------
+
+<html>
+<body>
+    <a href="setCookies.jsp">Create Cookies</a><br><br>
+    <a href="getCookies.jsp">Get Cookies</a>
+</body>
+</html>
+
+----------------------------------------------------------------
+
+<%@ page import="jakarta.servlet.http.Cookie" %>
+<html>
+<body>
+    <%
+        Cookie c1 = new Cookie("User", "aa");
+        Cookie c2 = new Cookie("Role", "bb");
+        Cookie c3 = new Cookie("SessionID", "123");
+
+        c1.setMaxAge(10);
+        c2.setMaxAge(20);
+        c3.setMaxAge(30);
+
+        response.addCookie(c1);
+        response.addCookie(c2);
+        response.addCookie(c3);
+
+        out.println("<h3>Cookies Created Successfully!</h3>");
+    %>
+    <a href='main.html'>Back to Home</a>
+</body>
+</html>
+
+
+----------------------------------------------------------------
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<html>
+<body>
+    <%
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            out.println("<h1>" + cookie.getName() + ": " + cookie.getValue() + "</h1>");
+        }
+    %>
+    <a href="main.html">Back to Home</a>
+</body>
+</html>
