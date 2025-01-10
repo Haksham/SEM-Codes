@@ -2,3 +2,117 @@ Q.5 Write a JSP program to create a form with Book_No, Title, Author, Publicatio
 
 ----------------------------------------------------------------
 
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Retrieve Book</title>
+</head>
+<body>
+
+    <%
+        String title = request.getParameter("title");
+
+        if (title != null) {
+            String dbUrl = "jdbc:mysql://localhost:3306/melt",dbUser = "root",dbPassword = "Hot@22spiceups";
+            String query = "SELECT * FROM books WHERE title = ?";
+
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                
+                Connection conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+                PreparedStatement pstmt = conn.prepareStatement(query);
+                pstmt.setString(2, title);
+                ResultSet rs = pstmt.executeQuery();
+
+                if (rs.next()) {
+                    out.println("<h3>Book Details:</h3>");
+                    out.println("<p>Book No: " + rs.getInt(1) + "</p>");
+                    out.println("<p>Title: " + rs.getString(2) + "</p>");
+                    out.println("<p>Author: " + rs.getString(3) + "</p>");
+                    out.println("<p>Publication: " + rs.getString(4) + "</p>");
+                    out.println("<p>Price: " + rs.getDouble(5) + "</p>");
+                } else {
+                    out.println("<p style='color: red;'>No book found with the title '" + title + "'</p>");
+                }
+            } catch (Exception e){}
+        }
+    %>
+        <a href="main.html">Back to Home</a>
+</body>
+</html>
+
+----------------------------------------------------------------
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<body>
+    <%
+        int bookNo = Integer.parseInt(request.getParameter("book_no"));
+        String title = request.getParameter("title");
+        String author = request.getParameter("author");
+        String publication = request.getParameter("publication");
+        double price = Double.parseDouble(request.getParameter("price"));
+
+        String dbUrl = "jdbc:mysql://localhost:3306/melt";
+        String dbUser = "root";
+        String dbPassword = "Hot@22spiceups";
+        String query = "INSERT INTO books (bookNo, title, author, publication, price) VALUES (?, ?, ?, ?, ?)";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);            
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            
+            pstmt.setInt(1, bookNo);
+            pstmt.setString(2, title);
+            pstmt.setString(3, author);
+            pstmt.setString(4, publication);
+            pstmt.setDouble(5, price);
+            pstmt.executeUpdate();
+
+            out.println("<h3>Book details added successfully!</h3>");
+            
+        } catch (Exception e) {}
+    %>
+    <a href="main.html">Back to Home</a>
+</body>
+</html>
+
+
+----------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Details Form</title>
+</head>
+<body>
+    <h2>Enter Book Details</h2>
+    <form action="set.jsp" method="post">
+        <label for="book_no">Book No:</label>
+        <input type="number" name="book_no" required><br><br>
+        
+        <label for="title">Title:</label>
+        <input type="text"  name="title" required><br><br>
+        
+        <label for="author">Author:</label>
+        <input type="text" name="author" required><br><br>
+        
+        <label for="publication">Publication:</label>
+        <input type="text"  name="publication" required><br><br>
+        
+        <label for="price">Price:</label>
+        <input type="number"  name="price" required><br><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <h2>Retrieve Book Details</h2>
+    <form action="get.jsp" method="post">
+        <input type="text" name="title" placeholder="title">
+        <input type="submit" value="search">
+    </form>
+</body>
+</html>
