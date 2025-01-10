@@ -20,7 +20,7 @@ Q.10 Develop a JSP application that has the following pages. The index page regi
   <%
     String user = request.getParameter("user");
     String pass = request.getParameter("pass");
-    if (user != null && pass != null && !user.isEmpty() && !pass.isEmpty()) {
+    if (user != null && pass != null && !user.isEmpty() && !pass.isEmpty() && user.equals("admin") && pass.equals("admin")) {
       
         HttpSession s = request.getSession();
         s.setAttribute("username", user);
