@@ -32,8 +32,8 @@ he is eligible to vote or not. Validate the page before displaying the details.
     	String mail = request.getParameter("mail");
 		String dob = request.getParameter("dob");
 		
-	    LocalDate dateOfBirth = LocalDate.parse(dob);
-	    int year = dateOfBirth.getYear();
+	    LocalDate date = LocalDate.parse(dob);
+	    int year = date.getYear();
 	    
 	    if(2025-year <18){
 	    	out.print("<p>"+fname+" "+lname+" is not eligible to vote. <p>");
