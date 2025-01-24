@@ -4,11 +4,7 @@ Q.11B Write a JSP program to create a form with Book_No, Title, Author, Publicat
 
 <%@ page import="java.sql.*" %>
 <%@ page import="java.io.*" %>
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Retrieve Book</title>
-</head>
 <body>
 
     <%
@@ -45,7 +41,6 @@ Q.11B Write a JSP program to create a form with Book_No, Title, Author, Publicat
 
 ----------------------------------------------------------------
 <%@ page import="java.sql.*" %>
-<!DOCTYPE html>
 <html>
 <body>
     <%

@@ -1,0 +1,88 @@
+Q.1A
+Write a java program that connects to a Department (Dept_ID, Name, Year_Established, Head_Name, No_of_Employees) database using JDBC and perform the following.
+i.	Display details of all the Departments using Statement Object.
+ii.	Display details of all the Departments which are established in the year 2000 using PreparedStatement object.
+iii.	Display details of all the Departments by reading Dept_ID and Department_Name from the user using PreparedStatement object.
+iv.	Insert a new row using PreparedStatement object. Display the details.
+
+----------------------------------------------------------------
+// Create database table beforehand on myphp
+
+import java.sql.*;
+import java.util.*;
+public class sht_exams {
+    public static void main(String[] args) {
+    	
+    	String url = "jdbc:mysql://localhost:3306/dbName", user = "root", pass = "";
+      Scanner sc = new Scanner(System.in);
+
+      try {
+        Connection conn = DriverManager.getConnection(url, user, pass);
+        Statement stmt = conn.createStatement();
+
+        // i. Display details of all the Departments using Statement Object
+        String queryAllDepartments = "SELECT * FROM Department";
+        ResultSet rs = stmt.executeQuery(queryAllDepartments);
+        printResultSet(rs);
+
+        // ii. Display details of all the Departments which are established in the Year_Established 2000 using PreparedStatement object
+        System.out.print("\nEnter the Year_Established to filter departments: ");
+        int Year_Established = sc.nextInt();
+        String queryByYear_Established = "SELECT * FROM Department WHERE Year_Established = ?";
+        PreparedStatement pStmt = conn.prepareStatement(queryByYear_Established);
+        pStmt.setInt(1, Year_Established);
+        ResultSet rsByYear_Established = pStmt.executeQuery();
+        System.out.println("\nDepartments established in the Year_Established " + Year_Established + ":");
+        printResultSet(rsByYear_Established);
+            
+        // iii. Display details of all Departments by reading Dept_ID and Department Name from the user using PreparedStatement object
+        System.out.print("\nEnter Dept_ID to filter departments: ");
+        int deptDept_ID = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Enter Department Name to filter departments: ");
+        String deptName = sc.nextLine();
+        String queryByDept_IDAndName = "SELECT * FROM Department WHERE Dept_ID = ? AND Name = ?";
+        PreparedStatement pStmt1 = conn.prepareStatement(queryByDept_IDAndName);
+        pStmt1.setInt(1, deptDept_ID);
+        pStmt1.setString(2, deptName);
+        ResultSet rsByDept_IDAndName = pStmt1.executeQuery();
+        System.out.println("\nDepartments with Dept_ID " + deptDept_ID + " and Name " + deptName + ":");
+        printResultSet(rsByDept_IDAndName);
+
+        // iv. Insert a new row using PreparedStatement object. Display the details
+        System.out.print("\nEnter new Dept_ID: ");
+        int newDeptDept_ID = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Enter new Department Name: ");
+        String newDeptName = sc.nextLine();
+        System.out.print("Enter Year_Established Established: ");
+        int newYear_EstablishedEstablished = sc.nextInt();
+        sc.nextLine(); 
+        System.out.print("Enter Head_Name Name: ");
+        String newHead_NameName = sc.nextLine();
+        System.out.print("Enter Number of Employees: ");
+        int newNo_of_EmployeesOfEmployees = sc.nextInt();
+
+        String insertSQL = "INSERT INTO Department (Dept_ID, Name, Year_Established, Head_Name, No_of_Employees) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement pStmt11 = conn.prepareStatement(insertSQL);
+        pStmt11.setInt(1, newDeptDept_ID);
+        pStmt11.setString(2, newDeptName);
+        pStmt11.setInt(3, newYear_EstablishedEstablished);
+        pStmt11.setString(4, newHead_NameName);
+        pStmt11.setInt(5, newNo_of_EmployeesOfEmployees);
+        pStmt11.executeUpdate();
+        System.out.println("New department inserted successfully.");
+      } catch(SQLException e){} 
+  }
+
+  private static void printResultSet(ResultSet rs) throws SQLException {
+      System.out.println("Dept_ID\tName\tYear_Established\tHead_Name\tNo_of_Employees");
+      while (rs.next()) {
+          System.out.println(rs.getInt("Dept_ID") + "\t" +
+                  rs.getString("Name") + "\t\t" +
+                  rs.getInt("Year_Established") + "\t\t" +
+                  rs.getString("Head_Name") + "\t\t" +
+                  rs.getInt("No_of_Employees"));
+      }
+    }
+}

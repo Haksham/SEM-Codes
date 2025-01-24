@@ -2,8 +2,6 @@ Q.9B	Write a Java Servlet program to display how many times a visitor is visitin
 
 ----------------------------------------------------------------
 
-package mypack;
-
 public class servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

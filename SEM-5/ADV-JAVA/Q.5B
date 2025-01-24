@@ -22,7 +22,6 @@ he is eligible to vote or not. Validate the page before displaying the details.
 <%@ page import="java.io.*" %>
 <%@ page import="java.time.*" %>
 
-<!DOCTYPE html>
 <html>
 <body>
 

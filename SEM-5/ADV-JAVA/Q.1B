@@ -15,8 +15,6 @@ Q.1B	Write a Java Servlet program that reads following information -> Employeeâ€
 
 ----------------------------------------------------------------
 
-package mypack;
-
 public class serv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

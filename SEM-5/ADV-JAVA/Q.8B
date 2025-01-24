@@ -2,7 +2,6 @@ Q.8B	Write a Java servlet program to create 4 cookies. Set 2 cookies with 1 minu
 
 ----------------------------------------------------------------
 
-<!DOCTYPE html>
 <html>
 <body>
     <form action="servlet" method="post">
@@ -13,7 +12,6 @@ Q.8B	Write a Java servlet program to create 4 cookies. Set 2 cookies with 1 minu
 
 ----------------------------------------------------------------
 
-package mypack;
 public class servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     

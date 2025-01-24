@@ -14,7 +14,6 @@ Q.12B Develop a JSP application that has the following pages. The index page reg
 
 ----------------------------------------------------------------
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <body>
   <%
@@ -25,7 +24,7 @@ Q.12B Develop a JSP application that has the following pages. The index page reg
         HttpSession s = request.getSession();
         s.setAttribute("username", user);
         
-        out.println("welcome: " + user);
+        out.println("Welcome: " + user);
     } else {out.println("Invalid");}
 	%>
 </body>

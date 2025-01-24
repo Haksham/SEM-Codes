@@ -2,7 +2,6 @@ Q.6B	Write a Java Servlet program that loads area and phone no. of police statio
 
 ----------------------------------------------------------------
 
-package mypack;
 public class servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -35,7 +34,6 @@ public class servlet extends HttpServlet {
 
 ----------------------------------------------------------------
 
-<!DOCTYPE html>
 <html>
 <body>
     <form action = "servlet" method = "post">

@@ -1,0 +1,68 @@
+Q.2A
+a.	Write a java program that connects to the Movies (ID, Movie_Name, Genre,
+IMDB_Rating, Year) database using JDBC. Create an Updatable ResultSet and perform the following operations.
+i. Display details of all the Movies from the table.
+ii. Display details of 5th Movie from the table.
+iii. Insert a new row into the table using PreparedStatement and display all the details.
+iv. Delete a row from the table where the IMDB_Rating is less than 5.
+v. Update the Genre of a movie with ID as 10 to “Sci-fi”.
+
+----------------------------------------------------------------
+// Create database table beforehand on myphp
+
+package practices;
+import java.sql.*;
+
+public class mod {
+  public static void main(String[] args) {
+    
+    String url = "jdbc:mysql://localhost:3306/dbName", user = "root", pass = ""; 	
+      try {
+        Connection conn = DriverManager.getConnection(url, user, pass);
+        Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+          // i. Display details of all the Movies from the table
+          String queryAllMovies = "SELECT * FROM Movies";
+          ResultSet rs = stmt.executeQuery(queryAllMovies);
+          printResultSet(rs);
+
+          // ii. Display details of 5th Movie from the table
+          if (rs.absolute(5)) {
+              System.out.println("\nDetails of 5th Movie:");
+              System.out.println("Id\tname\tGenre\trating\tyear");
+              System.out.println(rs.getInt("Id") + "\t" +
+                      rs.getString("name") + "\t" +
+                      rs.getString("Genre") + "\t\t" +
+                      rs.getFloat("rating") + "\t" +
+                      rs.getInt("year"));
+          }
+
+          // iii. Insert a new row into the table using PreparedStatement and display all the details
+          String insertSQL = "INSERT INTO Movies (Id, name, Genre, rating, year) VALUES (?, ?, ?, ?, ?)";
+          PreparedStatement pStmt = conn.prepareStatement(insertSQL);
+          pStmt.setInt(1, 6);
+          pStmt.setString(2, "Morning Glory");
+          pStmt.setString(3, "Rom-Com");
+          pStmt.setFloat(4, 6.5f);
+          pStmt.setInt(5, 2010);
+          pStmt.executeUpdate();
+          System.out.println("\nNew movie inserted successfully.");
+
+          // Display all the details
+          rs = stmt.executeQuery(queryAllMovies);
+          printResultSet(rs);
+
+      } catch (SQLException e){}
+  }
+
+  private static void printResultSet(ResultSet rs) throws SQLException {
+      System.out.println("\nAll movies:\nId\tname\tGenre\trating\tyear");
+      while (rs.next()) {
+          System.out.println(rs.getInt("Id") + "\t" +
+                  rs.getString("name") + "\t" +
+                  rs.getString("Genre") + "\t\t" +
+                  rs.getFloat("rating") + "\t" +
+                  rs.getInt("year"));
+      }
+  }
+}
