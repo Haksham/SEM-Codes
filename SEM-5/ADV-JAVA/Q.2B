@@ -1,4 +1,4 @@
-Q.2	Create and store three cookies with different attributes (such as name, value, expiration time, etc.). Retrieve and display the stored cookies using a second JSP program, extracting their names, values, and any additional attributes
+Q.2B	Create and store three cookies with different attributes (such as name, value, expiration time, etc.). Retrieve and display the stored cookies using a second JSP program, extracting their names, values, and any additional attributes
 
 ----------------------------------------------------------------
 

@@ -1,4 +1,4 @@
-Q.1	Write a Java Servlet program that reads following information -> Employee’s name, number of hours worked in week, hourly pay rate, tax (20%) from the user and prints a statement of payroll with employee’s details.
+Q.1B	Write a Java Servlet program that reads following information -> Employee’s name, number of hours worked in week, hourly pay rate, tax (20%) from the user and prints a statement of payroll with employee’s details.
 
 
 ----------------------------------------------------------------

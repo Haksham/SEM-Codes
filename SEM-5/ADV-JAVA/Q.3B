@@ -1,0 +1,62 @@
+Q.3B
+Write a Java Servlet Program to implement a simple calculator. Validate the input data and display appropriate messages.
+
+----------------------------------------------------------------
+<html>
+<body>
+    <form action="get.jsp" method="post">
+        <input type="text" name="num1" placeholder="1st number (x)"><br>
+        <input type="text" name="num2" placeholder="2nd number"><br>
+        
+        <input type="radio" name="op" value="add"> 
+        <label>Addition</label><br>
+        <input type="radio" name="op" value="sub">
+        <label>Subtraction</label><br>
+        <input type="radio" name="op" value="mul">
+        <label>multiplication</label><br>
+        <input type="radio" name="op" value="div">
+        <label>Division</label><br>
+        <input type="radio" name="op" value="expo">
+        <label>Exponent</label><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+
+----------------------------------------------------------------
+
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.*" %>
+<%@ page import="java.lang.*" %>
+<!DOCTYPE html>
+<html>
+<body>
+
+    <%
+        String op = request.getParameter("op");
+    	String num1 = request.getParameter("num1");
+    	String num2 = request.getParameter("num2");
+    	
+    	Double numA = Double.parseDouble(num1);
+    	Double numB = Double.parseDouble(num2);
+    	Double res = 0.00;
+    	
+    	if(op.equals("add")){
+    		res = numA + numB;
+    	}else if(op.equals("sub")){
+    		res = numA - numB;
+    	}else if(op.equals("mul")){
+    		res = numA * numB;
+    	}else if(op.equals("div")){
+    		res = numA/numB;
+    	}else if(op.equals("expo")){
+    		res = Math.exp(numA);
+    	}else{
+    		out.print("Invalid");
+    	}
+    	
+    	out.print("<p>Result: " + res + "<p>");
+    %>
+</body>
+</html>

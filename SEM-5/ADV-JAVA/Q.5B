@@ -1,0 +1,47 @@
+Q.5B 
+Write a java servlet program to implement a webpage to check if the voter is eligible or not. User will enter his first name, last name, email id and date of birth. Check if
+he is eligible to vote or not. Validate the page before displaying the details.
+
+----------------------------------------------------------------
+<html>
+<body>
+    <form action="get.jsp" method="post">
+        <input type="text" name="fname" placeholder="First Name"><br>
+        <input type="text" name="lname" placeholder="Last Name"><br>
+        <input type="text" name="mail" placeholder="Email"><br>
+        <input type="date" name="dob" ><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+
+----------------------------------------------------------------
+
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.*" %>
+<%@ page import="java.time.*" %>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+    <%
+        String fname = request.getParameter("fname");
+    	String lname = request.getParameter("lname");
+    	String mail = request.getParameter("mail");
+		String dob = request.getParameter("dob");
+		
+	    LocalDate dateOfBirth = LocalDate.parse(dob);
+	    int year = dateOfBirth.getYear();
+	    
+	    if(2025-year <18){
+	    	out.print("<p>"+fname+" "+lname+" is not eligible to vote. <p>");
+	    }else if(2025-year >= 18){
+	    	out.print("<p>"+fname+" "+lname+" is eligible to vote. <p>");
+	    }else{
+	    	out.print("<p>Invalid Details <p>");
+	    }
+    %>
+</body>
+</html>

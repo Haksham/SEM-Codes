@@ -1,4 +1,4 @@
-Q.9 Write a JSP program that takes the user’s name and age from a form. Echo back the name and age along with a message stating the price of movie tickets. The price is determined by the age passed to the JSP.
+Q.10B Write a JSP program that takes the user’s name and age from a form. Echo back the name and age along with a message stating the price of movie tickets. The price is determined by the age passed to the JSP.
 a.	If the age is greater than 62, the movie ticket price is Rs. 50.
 b.	If the user is less than 10 years old, the price is Rs. 30.
 c.	For everyone else, the price is Rs. 80.

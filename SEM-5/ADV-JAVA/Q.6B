@@ -1,4 +1,4 @@
-Q.4	Write a Java Servlet program that loads area and phone no. of police station of that area from a database. It takes phone number ( do validation) as input and prints the details in a separate page. Create police_station table with appropriate fields.
+Q.6B	Write a Java Servlet program that loads area and phone no. of police station of that area from a database. It takes phone number ( do validation) as input and prints the details in a separate page. Create police_station table with appropriate fields.
 
 ----------------------------------------------------------------
 

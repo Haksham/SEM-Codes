@@ -1,4 +1,4 @@
-Q.8	Write a Java Servlet program to display how many times a visitor is visiting the webpage using session object. If the user is visiting for the first time, display Welcome message, else display the number of times he is visiting the page.
+Q.9B	Write a Java Servlet program to display how many times a visitor is visiting the webpage using session object. If the user is visiting for the first time, display Welcome message, else display the number of times he is visiting the page.
 
 ----------------------------------------------------------------
 
