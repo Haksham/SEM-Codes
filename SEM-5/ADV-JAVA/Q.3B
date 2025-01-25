@@ -26,10 +26,7 @@ Write a Java Servlet Program to implement a simple calculator. Validate the inpu
 
 ----------------------------------------------------------------
 
-<%@ page import="java.sql.*" %>
-<%@ page import="java.io.*" %>
-<%@ page import="java.lang.*" %>
-<!DOCTYPE html>
+<%@ page import="java.sql.* ,java.io.*, java.lang.* %>
 <html>
 <body>
 

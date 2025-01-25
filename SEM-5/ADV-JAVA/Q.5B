@@ -18,9 +18,7 @@ he is eligible to vote or not. Validate the page before displaying the details.
 
 ----------------------------------------------------------------
 
-<%@ page import="java.sql.*" %>
-<%@ page import="java.io.*" %>
-<%@ page import="java.time.*" %>
+<%@ page import="java.sql.* , java.io.* ,java.time.*" %>
 
 <html>
 <body>

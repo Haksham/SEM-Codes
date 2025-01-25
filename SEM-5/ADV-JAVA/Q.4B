@@ -1,8 +1,7 @@
 Q.4B	Write a JSP program to retrieve and display Student Information. Create an index.html page to collect the USN (University Serial Number) of the student from the user. In displayData.jsp, connect to the database, and retrieve the student details based on the USN entered by the user. If the USN exists in the database, display the corresponding USN and Name. If the USN does not exist, display the message: "Invalid USN".
 
 ----------------------------------------------------------------
-<%@ page import="java.io.*" %>
-<%@ page import="java.sql.*" %>
+<%@ page import="java.io.* , java.sql.*" %>
 <html>
 <body>
 
