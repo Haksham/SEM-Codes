@@ -31,7 +31,7 @@ Write a Java Servlet Program to implement a simple calculator. Validate the inpu
 <body>
 
     <%
-        String op = request.getParameter("op");
+      String op = request.getParameter("op");
     	String num1 = request.getParameter("num1");
     	String num2 = request.getParameter("num2");
     	
