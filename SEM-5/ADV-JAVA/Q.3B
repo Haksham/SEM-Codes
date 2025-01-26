@@ -4,7 +4,7 @@ Write a Java Servlet Program to implement a simple calculator. Validate the inpu
 ----------------------------------------------------------------
 <html>
 <body>
-    <form action="get.jsp" method="post">
+    <form action="servlet" method="post">
         <input type="text" name="num1" placeholder="1st number (x)"><br>
         <input type="text" name="num2" placeholder="2nd number"><br>
         
@@ -25,13 +25,12 @@ Write a Java Servlet Program to implement a simple calculator. Validate the inpu
 </html>
 
 ----------------------------------------------------------------
-
-<%@ page import="java.sql.* ,java.io.*, java.lang.* %>
-<html>
-<body>
-
-    <%
-      String op = request.getParameter("op");
+public class servlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;  
+	protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+		PrintWriter out = resp.getWriter();
+		
+		String op = request.getParameter("op");
     	String num1 = request.getParameter("num1");
     	String num2 = request.getParameter("num2");
     	
@@ -52,8 +51,6 @@ Write a Java Servlet Program to implement a simple calculator. Validate the inpu
     	}else{
     		out.print("Invalid");
     	}
-    	
     	out.print("<p>Result: " + res + "<p>");
-    %>
-</body>
-</html>
+	}
+}

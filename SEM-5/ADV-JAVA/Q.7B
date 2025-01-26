@@ -1,0 +1,67 @@
+Q.7B Write a JSP program to create a form with Book_No, Title, Author, Publication, Price and a Submit button. Using JSP-Database connectivity, get the data from the form and insert the records into the database. Retrieve the book details for the particular title and display the details.
+
+----------------------------------------------------------------
+<%@ page import="java.sql.*, java.io.*" contentType="text/html; charset=UTF-8" language="java" %>
+<html>
+<body>
+    <%
+        String url = "jdbc:mysql://localhost:3306/dbName" , user = "root" , pass = "";
+    	Class.forName("com.mysql.cj.jdbc.Driver");
+    	Connection conn = DriverManager.getConnection(url, user, pass);
+	    PreparedStatement pstmt = null;
+	    
+        String bookNo = request.getParameter("bookNo");
+        String title = request.getParameter("title");
+        String author = request.getParameter("author");
+        String publication = request.getParameter("publication");
+        String price = request.getParameter("price");
+
+        String searchtitle = request.getParameter("searchtitle");
+        String searchQuery = "SELECT * FROM books WHERE title = ?";
+        String insertQuery = "INSERT INTO books (bookNo, title, author, publication, price) VALUES (?, ?, ?, ?, ?)";
+
+        pstmt = conn.prepareStatement(insertQuery);
+        pstmt.setInt(1, Integer.parseInt(bookNo));
+        pstmt.setString(2, title);
+        pstmt.setString(3, author);
+        pstmt.setString(4, publication);
+        pstmt.setDouble(5, Double.parseDouble(price));
+        pstmt.executeUpdate();
+        out.println("<h3>Book inserted successfully</h3>");
+        
+
+        if (request.getParameter("searchtitle") != null) {        	
+            
+            pstmt = conn.prepareStatement(searchQuery);
+            pstmt.setString(1, searchtitle);
+            ResultSet rs = pstmt.executeQuery();
+            
+            if (rs.next()) {
+                out.println(rs.getInt("bookNo")+"," + rs.getString("title")+","+ rs.getString("author")+","+ rs.getString("publication")+","+ rs.getDouble("price"));
+            } else { out.println("<h3>No book found.</h3>"); }
+        }
+    %>
+    <a href="main.html">Go back to the form</a>
+</body>
+</html>
+
+----------------------------------------------------------------
+<html>
+<body>
+    <h2>Enter Book Details</h2>
+    <form action="get.jsp" method="post">
+       <input type="text" name="bookNo" placeholder="number" />
+       <input type="text" name="title" placeholder="title" />
+       <input type="text" name="author" placeholder="author" />
+       <input type="text" name="publication" placeholder="publication" />
+       <input type="text" name="price" placeholder="price"/>
+       <input type="submit" value="Submit" />
+    </form>
+
+    <h3>Search Book by Title</h3>
+    <form action="get.jsp" method="get">
+        <input type="text" name="searchtitle" placeholder="Enter Book Title" />
+        <input type="submit" value="Search" />
+    </form>
+</body>
+</html>

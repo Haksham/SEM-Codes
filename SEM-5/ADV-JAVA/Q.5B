@@ -5,7 +5,7 @@ he is eligible to vote or not. Validate the page before displaying the details.
 ----------------------------------------------------------------
 <html>
 <body>
-    <form action="get.jsp" method="post">
+    <form action="servlet" method="post">
         <input type="text" name="fname" placeholder="First Name"><br>
         <input type="text" name="lname" placeholder="Last Name"><br>
         <input type="text" name="mail" placeholder="Email"><br>
@@ -17,28 +17,25 @@ he is eligible to vote or not. Validate the page before displaying the details.
 </html>
 
 ----------------------------------------------------------------
-
-<%@ page import="java.sql.* , java.io.* ,java.time.*" %>
-
-<html>
-<body>
-
-    <%
-        String fname = request.getParameter("fname");
-    	String lname = request.getParameter("lname");
-    	String mail = request.getParameter("mail");
+public class servlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;  
+	protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+		PrintWriter out = resp.getWriter();
+		
+		String fname = request.getParameter("fname");
+	  String lname = request.getParameter("lname");
+	  String mail = request.getParameter("mail");
 		String dob = request.getParameter("dob");
 		
-	    LocalDate date = LocalDate.parse(dob);
-	    int year = date.getYear();
-	    
-	    if(2025-year <18){
-	    	out.print("<p>"+fname+" "+lname+" is not eligible to vote. <p>");
-	    }else if(2025-year >= 18){
-	    	out.print("<p>"+fname+" "+lname+" is eligible to vote. <p>");
-	    }else{
-	    	out.print("<p>Invalid Details <p>");
-	    }
-    %>
-</body>
-</html>
+		LocalDate date = LocalDate.parse(dob);
+		int year = date.getYear();
+		
+		if(2025-year <18){
+			out.print("<p>"+fname+" "+lname+" is not eligible to vote. <p>");
+		}else if(2025-year >= 18){
+			out.print("<p>"+fname+" "+lname+" is eligible to vote. <p>");
+		}else{
+			out.print("<p>Invalid Details <p>");
+		}
+	}
+}

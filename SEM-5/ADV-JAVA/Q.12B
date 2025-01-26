@@ -13,7 +13,6 @@ Q.12B Develop a JSP application that has the following pages. The index page reg
 </html>
 
 ----------------------------------------------------------------
-
 <html>
 <body>
   <%

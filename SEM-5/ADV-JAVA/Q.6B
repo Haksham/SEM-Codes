@@ -10,7 +10,7 @@ public class servlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		
 		String phone = req.getParameter("phone");
-		String url  ="jdbc:mysql://localhost:3306/melt",user = "root",pass = "";
+		String url  ="jdbc:mysql://localhost:3306/dbName",user = "root",pass = "";
 		String sql = "select * from policestation where number = ?";
 		
 		try {
