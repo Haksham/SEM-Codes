@@ -6,7 +6,7 @@ Q.7B Write a JSP program to create a form with Book_No, Title, Author, Publicati
 <body>
     <%
         String url = "jdbc:mysql://localhost:3306/dbName" , user = "root" , pass = "";
-    	Class.forName("com.mysql.cj.jdbc.Driver");
+    	Class.forName("com.mysql.jdbc.Driver");
     	Connection conn = DriverManager.getConnection(url, user, pass);
 	    PreparedStatement pstmt = null;
 	    
