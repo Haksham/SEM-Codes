@@ -1,0 +1,34 @@
+Q.2A
+Consider the Employee database given below. The primary keys are
+underlined. Assume relevant data types for attributes.
+EMPLOYEE (Fname, Lname, SSN, Addrs, Sex, Salary, SuperSSN,Dno)
+DEPARTMENT (Dname, Dnumber, MgrSSN, MgrStartDate)
+PROJECT(Pno, Pname, Dnum)
+WORKS_ON (ESSN, Pno, Hours)
+Create the above tables in SQL. Specify primary and foreign keys properly.
+Enter at least 5 tuples in each table with relevant data. Solve the following
+queries.
+i. Retrieve the name of all employees whose salary is greater than the salary of all employees in dept 5.
+ii. Retrieve the ssn of all employees who work on project numbers 1,2 or 3
+iii. Display the total Number of hours put in by all employees on every project.
+----------------------------------------------------------------
+
+CREATE TABLE EMPLOYEE (Fname VARCHAR(10) NOT NULL,Lname VARCHAR(15) NOT NULL,Ssn VARCHAR(9) PRIMARY KEY,Bdate DATE,Address VARCHAR(40),Sex CHAR,Salary INT,Super_ssn VARCHAR(9),Dno INT);
+
+CREATE TABLE DEPARTMENT(Dname VARCHAR(15) NOT NULL,Dnumber INT PRIMARY KEY,Mgr_ssn VARCHAR(9) NOT NULL,Mgr_start_date DATE,FOREIGN KEY (Mgr_ssn) REFERENCES EMPLOYEE(Ssn),);
+
+CREATE TABLE PROJECT(Pnumber INT PRIMARY KEY,Pname VARCHAR(20) NOT NULL,Dnum INT,FOREIGN KEY (Dnum) EFERENCES DEPARTMENT(Dnumber));
+
+CREATE TABLE WORKS_ON (Essn VARCHAR(9),Pno INT,Hours INT,PRIMARY KEY(Essn, Pno),FOREIGN KEY (Pno) REFERENCES PROJECT(Pnumber),FOREIGN KEY (Essn) REFERENCES EMPLOYEE(Ssn));
+
+INSERT INTO EMPLOYEE Values('John','Smith', 123456789, '09-JAN-65', '731 Fondren,
+Houston, TX', 'M', 30000, NULL, NULL);
+INSERT INTO DEPARTMENT Values('Research',5,'333445555','22-MAY-1988');
+INSERT INTO PROJECT Values(1,‘ProductX’,5);
+INSERT INTO WORKS_ON Values('123456789',1,32);
+
+SELECT Fname,Lname FROM EMPLOYEE WHERE Salary >all (SELECT Salary FROM EMPLOYEE WHERE Dno=5);
+
+SELECT DISTINCT Essn FROM WORKS_ON WHERE PNO IN (1, 2, 3);
+
+SELECT Pno,SUM(Hours) FROM WORKS_ON GROUP BY Pno;

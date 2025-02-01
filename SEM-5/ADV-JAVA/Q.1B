@@ -1,10 +1,8 @@
 Q.1B	Write a Java Servlet program that reads following information -> Employee’s name, number of hours worked in week, hourly pay rate, tax (20%) from the user and prints a statement of payroll with employee’s details.
-
-
 ----------------------------------------------------------------
 <html>
 <body>
-	<form action="serv" method="post">
+	<form action="servlet" method="post">
 		<input name="name" type="text" placeholder="name"><br>
 		<input name="hrs" type="number" placeholder="hrs"><br>
 		<input name="rate" type="number" placeholder="rate"><br>

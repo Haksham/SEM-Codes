@@ -1,0 +1,18 @@
+Q.8B
+Consider the following Movie table with the following attributes -
+Actor_name,Actor_id, Actor_birthdate, Director_name,Director_id,
+Director_birthdate, film_title, year of production ,type (thriller,
+comedy, etc.)
+Create 10 documents with data relevant to the following questions.
+Write and execute MongoDB queries:
+i. List all the movies acted by John and Elly in the year 2012.
+ii. List only the name and type of the movie where Ram has acted
+sorted by movie names
+----------------------------------------------------------------
+db.createCollection("movie");
+
+db.movie.insert([{act_n:"ram",act_id:13,act_bdate:"2/3/1997",dir_n:"williams",dir_id:101,dir_bdate:"12/9/1987",film:"battleship",year:2015,type:"thriller"}]);
+
+db.movie.find({$and : [{act_n:{$in : ["john","elly"]}},{year:2012}]},{film:1}).pretty();
+
+db.movie.find({act_n:"ram"},{film:1,type:1}).sort({film:1}).pretty();

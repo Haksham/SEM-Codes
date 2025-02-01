@@ -1,0 +1,29 @@
+Q.5A
+Consider the Aircraft database given below. The primary keys are
+underlined. Assume relevant data types for attributes.
+AIRCRAFT (Aircraft ID, Aircraft_name, Cruising_range)
+CERTIFIED (Emp ID, Aircraft ID)
+EMPLOYEE (Emp ID, Ename, Salary)
+Create the above tables in SQL. Specify primary and foreign keys properly.
+Enter at least 5 tuples in each table with relevant data. Solve the following
+queries.
+i. Find the names of pilots certified for Boeing aircraft
+ii. Arrange the Aircrafts with respect to the ascending order of
+distance.
+iii. Find the name of pilots who can operate flights with a range greater
+than 3000 miles but are not certified on any Boeing aircraft.
+----------------------------------------------------------------
+
+Create table aircraft(aid varchar(9) primary key,aname varchar(10),crange int);
+Create table employees(eid varchar(9) primary key,ename varchar(10),salary int);
+Create table certified(eid varchar(9)references employees(eid),aid varchar(9)references aircraft(aid));
+
+insert into aircraft values('B001','Boeing',4000);
+insert into employees values(1,'Johnny',40000);
+insert into certified values(1,'B001');
+
+SELECT DISTINCT E.ename FROM employees E, certified C, aircraft A WHERE E.eid = C.eid AND C.aid = A.aid AND A.aname='Boeing';
+
+SELECT aid FROM aircraft ORDER BY crange ASC;
+
+select distinct(ename) from employees E,certified C, aircraft A where A.crange > 3000 and C.aid NOT in(select aid from aircraft A where A.aname='Boeing') and E.eid = C.eid;

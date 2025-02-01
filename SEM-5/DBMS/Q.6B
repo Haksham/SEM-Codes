@@ -1,0 +1,18 @@
+Q.6B
+Consider the following Tourist places table with the following
+attributes -
+Place, address – (state, id), tourist attractions,best time of the year to
+visit,modes of transport(include nearest airport, railway station etc),
+accommodation, food - what not to miss for sure
+Create 10 documents with data relevant to the following questions.
+Write and execute MongoDB queries:
+i. List all the tourist places of Karnataka
+ii. List the places sorted state wise
+----------------------------------------------------------------
+db.createCollection("tourist");
+
+db.tourist.insert([{place:"agra",address:"delhi",id:3,tour_att:"taj mahal",time:"march",mode:"car",acc:"acc3",food:"petha"}]);
+
+db.tourist.find({address:"karnataka"},{tour_att:true}).pretty();
+
+db.tourist.find({},{place:1}).sort({address:1});

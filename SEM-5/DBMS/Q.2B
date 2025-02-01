@@ -1,0 +1,17 @@
+Q.2B
+Consider the following restaurant table with the following attributes -
+Name, address –(building, street, area, pincode), id, cuisine, nearby
+landmarks, online delivery- (yes/no), famousfor(name of the dish)
+Create 10 documents with data relevant to the following questions.
+Write and execute MongoDB queries:
+i. List the name, address and nearby landmarks of all restaurants in Bangalore where north Indian thali(cuisine) is available
+ii. List the name and address of restaurants and also the dish the restaurant is famous for, in Bangalore.
+----------------------------------------------------------------
+
+db.createCollection(“rest");
+
+db.rest.insert({name:"McD",building:12, street:"KR", area:"JN" pin:072,ID:1, cuisine:"fast food",landmark:"post office",od:"yes",famousfor:"cheese burger"});
+
+db.rest.find({famousfor:"north indian thali",area:"Bangalore"},{name:1,building:1,street:1,area:1,pin:1,landmark:1,_id:0});
+
+db.rest.find({area:"Bangalore"},{name:1, building:1, street:1, area:1, pin:1, famousfor:1})

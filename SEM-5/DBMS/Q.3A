@@ -1,0 +1,27 @@
+Q.3A
+Consider the Aircraft database given below. The primary keys are
+underlined. Assume relevant data types for attributes.
+AIRCRAFT (Aircraft ID, Aircraft_name, Cruising_range)
+CERTIFIED (Emp ID, Aircraft ID)
+EMPLOYEE (Emp ID, Ename, Salary)
+Create the above tables in SQL. Specify primary and foreign keys properly.
+Enter at least 5 tuples in each table with relevant data. Solve the following
+queries.
+i. Find the employee ID’s of employee who make the highest salary.
+ii. Find the name of aircrafts such that all pilots certified to operate them earn more than 50000
+iii. Find the employees who are not certified for operating any aircraft.
+----------------------------------------------------------------
+
+Create table aircraft(aid varchar(9) primary key,aname varchar(10),crange int);
+Create table employees(eid varchar(9) primary key,ename varchar(10),salary int);
+Create table certified(eid varchar(9)references employees(eid),aid varchar(9)references aircraft(aid));
+
+insert into aircraft values('B001','Boeing',4000);
+insert into employees values(1,'Johnny',40000);
+insert into certified values(1,'B001');
+
+SELECT eid FROM employees WHERE salary=(SELECT MAX(salary) FROM employees);
+
+SELECT distinct aname FROM aircraft a,certified c,employees e WHERE a.aid=c.aid and c.eid=e.eid and e.salary>50000;
+
+select ename,max(a.aid) from employees e,certified c,aircraft a where e.eid=c.eid and a.aid=c.aid;

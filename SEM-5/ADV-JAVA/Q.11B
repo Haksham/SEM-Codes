@@ -1,4 +1,80 @@
 Q.11B
 	Write a servlet program that uses JDBC to display the subjects allotted for the faculty. Subjects Table should have Sub_ID, Sub_Name and Faculty_ID as the fields. Update subject details for a faculty and display how many rows are updated.
+----------------------------------------------------------------
+<html>
+<body>
+    <form action="servlet" method="post">
+        <label for="facultyID">Faculty ID:</label>
+        <input type="text" name="facultyID" id="facultyID"  />
+        <input type="submit" value="Get Subjects" />
+    </form>
+</body>
+</html>
 
 ----------------------------------------------------------------
+import java.io.*;
+import java.sql.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class FacultySubjectsServlet extends HttpServlet {
+    
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/your_database";
+    private static final String DB_USERNAME = "root";
+    private static final String DB_PASSWORD = "";
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+							Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        
+        String facultyID = request.getParameter("facultyID");
+
+        if (facultyID == null || facultyID.isEmpty()) {
+            out.println("<h3>Please provide a Faculty ID.</h3>");
+            return;
+        }
+
+        try {
+            String query = "SELECT Sub_ID, Sub_Name FROM Subjects WHERE Faculty_ID = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setInt(1, Integer.parseInt(facultyID));
+
+            ResultSet rs = stmt.executeQuery();
+            out.println("<h3>Subjects Allotted to Faculty ID: " + facultyID + "</h3>");
+            out.println("<table border='1'><tr><th>Subject ID</th><th>Subject Name</th><th>Action</th></tr>");
+
+            while (rs.next()) {
+                out.println("<tr><td>" + rs.getInt("Sub_ID") + "</td>");
+                out.println("<td>" + rs.getString("Sub_Name") + "</td>");
+                out.println("<td><a href='updateSubjectForm?subID=" + rs.getInt("Sub_ID") + "&facultyID=" + facultyID + "'>Update</a></td></tr>");
+            }
+            out.println("</table>");
+        } catch (SQLException e) {
+            out.println("<h3>Error retrieving data: " + e.getMessage() + "</h3>");
+        }
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        
+        String subID = request.getParameter("subID");
+        String subName = request.getParameter("subName");
+
+        if (subID != null && subName != null) {
+            try {
+                String query = "UPDATE Subjects SET Sub_Name = ? WHERE Sub_ID = ?";
+                PreparedStatement stmt = connection.prepareStatement(query);
+                stmt.setString(1, subName);
+                stmt.setInt(2, Integer.parseInt(subID));
+
+                int rowsUpdated = stmt.executeUpdate();
+                out.println("<h3>" + rowsUpdated + " row(s) updated.</h3>");
+            } catch (SQLException e) {}
+        }
+    }
+}

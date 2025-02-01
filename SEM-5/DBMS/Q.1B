@@ -1,0 +1,20 @@
+Q.1B
+Consider the following restaurant database with the following
+attributes -
+Name, address –(building, street, area, pincode),id, cuisine, nearby
+landmarks, online delivery- yes/no, famous for(name of the dish)
+Create 10 documents with data relevant to the following questions.
+Write and execute MongoDB queries:
+i. List the name and address of all restaurants in Bangalore with Italian
+cuisine
+ii. List the name, address and nearby landmarks of all restaurants in
+Bangalore where north Indianthali(cuisine) is available.
+----------------------------------------------------------------
+
+db.createCollection(“rest");
+
+db.rest.insert({name:"McD",building:12,street:"KR",area:"JN",pin:072,ID:1,cuisine:"fast food",landmark:"post office",od:"yes",famousfor:"cheese burger"});
+
+db.rest.find({cuisine:"Italian",area:"Bangalore"},{name:1,building:1,street:1,area:1,pin:1,_id:0}).pretty();
+
+db.rest.find({famousfor:"north indian thali",area:"Bangalore"},{name:1,building:1,street:1,area:1,pin:1,landmark:1,_id:0});

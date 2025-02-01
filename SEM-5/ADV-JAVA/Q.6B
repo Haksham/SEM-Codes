@@ -30,8 +30,6 @@ public class servlet extends HttpServlet {
 		}catch(Exception e) {}
 	}
 }
-
-
 ----------------------------------------------------------------
 
 <html>

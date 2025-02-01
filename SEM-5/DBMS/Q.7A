@@ -1,0 +1,34 @@
+Q.7A
+Consider the following Accident Tracker Schema. The primary keys are
+underlined.
+PERSON (driver – id #, name, address)
+CAR (Regno, model, year)
+ACCIDENT (report-number, acc_date, location)
+OWNS (driver-id #, Regno)
+PARTICIPATED (driver-id, Regno, report-number, damageamount)
+Create the above tables in SQL. Specify primary and foreign keys properly.
+Enter at least 5 tuples in each table with relevant data. Solve the following
+queries.
+i. Display the unique Regno’s of the cars involved in accidents.
+ii. Display the car Regno and model of the car which has the maximum
+damage amount.
+iii. Display the number of cars owned by each driver.
+----------------------------------------------------------------
+
+create table PERSON (Did VARCHAR(10) PRIMARY KEY,Pname VARCHAR(10),Address VARCHAR(60));
+create table CAR (Regno VARCHAR(10) PRIMARY KEY,Model VARCHAR(20),Year INT);
+create table ACCIDENT (Repno INT PRIMARY KEY,Date DATE,Loc VARCHAR(20));
+create table OWNS (Odid VARCHAR(10),Oregno VARCHAR(10),Primary Key(Odid,Oregno),Foreign key(Odid) references PERSON(Did) on delete cascade,Foreign key(Oregno) references CAR(Regno) on delete cascade);
+create table PARTICIPATED (Pdid VARCHAR(10),Pregno VARCHAR(10),Prepno INT,Damage INT,Primary key(Pdid, Pregno, Prepno),Foreign ey (Pdid) references PERSON(Did) on delete cascade,Foreign key (Pregno) references CAR(Regno) on delete cascade,Foreign key(Prepno) references ACCIDENT(Repno) on delete cascade);
+
+insert into PERSON values('1','Steve','Frankfurt');
+insert into CAR values('KA04','BMW',2000);
+insert into ACCIDENT values(12,'01-Jun-2001','Frankfurt');
+insert into OWNS values('1', 'KA04');
+insert into PARTICIPATED values('1', 'KA04',12,1000);
+
+Select distinct (Pregno)from PARTICIPATED;
+
+Select Pregno,Model from CAR, PARTICIPATED where Pregno=Regno and Damage in (select max(Damage) from PARTICIPATED);
+
+Select Odid,count(*) as no_of_cars from OWNS group by Odid;

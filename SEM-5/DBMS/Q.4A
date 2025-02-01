@@ -1,0 +1,28 @@
+Q.4A
+Consider the Supply-Parts database given below. The primary keys are
+underlined. Assume relevant data types for attributes.
+SUPPLIER (Sid, Sname, Address)PART (PID, Pname, Color)
+SHIPMENT (Sid, PID, Cost)
+Create the above tables in SQL. Specify primary and foreign keys properly.
+Enter at least 5 tuples in each table with relevant data. Solve the following
+queries.
+i. Find the Sid’s of suppliers who supply a green part
+ii. For every supplier print the name of the supplier and the total number
+of parts that he/she supplies
+iii. Update the part color supplied by supplier s3 to yellow
+----------------------------------------------------------------
+
+CREATE TABLE SUPPLIER(Sid int NOT NULL PRIMARY KEY,Sname varchar(16) NOT NULL UNIQUE,Address varchar(20) NOT NULL);
+CREATE TABLE PART(Pid int NOT NULL PRIMARY KEY,Pname varchar(18) NOT NULL,Color varchar(10) NOT NULL,);
+CREATE TABLE SHIPMENT(Sid int NOT NULL REFERENCES SUPPLIER,Pid int NOT NULL REFERENCES PART,Cost int NOT NULL,PRIMARY KEY (Sid,Pid));
+CREATE TABLE SHIPMENT(Sid int,Pid int,Cost int,primary key(Sid,Pid),foreign key(Sid) references SUPPLIER(Sid),foreign key(Pid)references PART(Pid));
+
+INSERT INTO SUPPLIER VALUES (1, 'Smith', 'London');
+INSERT INTO PART VALUES (1, 'Nut', 'Red');
+INSERT INTO SHIPMENT VALUES (1, 1, 300);
+
+SELECT Distinct S.Sid FROM SUPPLIER S, PART P, SHIPMENT C WHERE C.Sid=S.Sid AND P.PID=C.PID AND P.Color like 'Green';
+
+SELECT S.Sname, COUNT(*) as PartCount FROM SUPPLIER S, SHIPMENT C, PART P WHERE C.Sid = S.Sid and P.PID = C.PID GROUP BY S.Sname, S.Sid;
+
+UPDATE PART SET Color='Yellow' WHERE PID IN (SELECT C.PID FROM SUPPLIER S, SHIPMENT C WHERE C.Sid=S.Sid and C.Sid=3);

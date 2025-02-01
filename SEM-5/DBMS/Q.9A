@@ -1,0 +1,36 @@
+Q.9A
+Consider the following shipment schema. The primary keys are
+underlined. Assume relevant data types for attributes.
+CUSTOMER (cust# ,cname, city)
+ORDER (order#, odate, cust #, ord-Amt)
+ORDER – ITEM (order #, Item #, qty)
+ITEM (item #, unit price)
+SHIPMENT (order #, ship-date)
+Create the above tables in SQL. Specify primary and foreign keys properly.
+Enter at least 5 tuples in each table with relevant data. Solve the following
+queries.
+i. List the customer names who have placed more than 2
+orders.
+ii. Find the total order amount for each day
+iii. List the customer details who has the largest order amount.
+----------------------------------------------------------------
+
+Create table CUSTOMER(Cno INT,Cname VARCHAR(50),Ccity VARCHAR(50),Primary key(Cno));
+Create table ORDER1(Ono INT,Odate DATE,Ocno INT,Oamt INT,Primary key(Ono),Foreign Key(Ocno) references CUSTOMER(Cno) on delete cascade);
+Create table ITEM(Ino INT ,Uprice INT,Primary key(Ino));
+Create table ORDER_ITEM(Iono INT,Oino INT,Qty INT,Primary key(Iono,Oino),Foreign Key(Iono) references ORDER1(Ono) on delete cascade,Foreign Key(Oino) references ITEM(Ino) on delete cascade);
+Create table WAREHOUSE(Wno INT,Wcity VARCHAR(50),Primary Key(Wno));
+Create table SHIPMENT(Sono INT,Swno INT,Shipdate DATE,Primary key(Sono,Swno),Foreign Key(Sono) references ORDER1(Ono) on delete cascade,Foreign Key(Swno) references WAREHOUSE(Wno) on delete cascade);
+
+Insert into CUSTOMER values (1,'Archie','Bangalore');
+Insert into ORDER1 values (1, '01-Jun-2016',1,1000);
+Insert into ITEM values(1,100);
+Insert into ORDER_ITEM values(1,1,2);
+Insert into WAREHOUSE values(1,'Bangalore');
+Insert into SHIPMENT values(1,1,'03-Jun-2016');
+
+Select Cname FROM CUSTOMER where (Select count(Ono) from ORDER1 where Cno=Ocno)>=2;
+
+Select Odate,SUM(Oamt) from ORDER1 group by Odate;
+
+Select Cno,Cname,Ccity from CUSTOMER,ORDER1 where Cno=Ocno and Oamt in(select max(Oamt) from ORDER1);
