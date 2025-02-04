@@ -17,8 +17,6 @@ create table boat( bid int primary key,bname varchar(19),clr varchar(10));
 create table res(rsid int,rbid int,day int,foreign key(rsid) references soilr(sid),foreign key(rbid) references boat(bid));
 
 insert into soilr values(111,"aa",4,23);
-insert into soilr values(112,"aa",4,23);
-insert into soilr values(113,"aa",4,23);
 insert into boat values(121,"baa","block");
 insert into res values(111,121,45);
 

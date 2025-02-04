@@ -13,22 +13,22 @@ ii. Retrieve the ssn of all employees who work on project numbers 1,2 or 3
 iii. Display the total Number of hours put in by all employees on every project.
 ----------------------------------------------------------------
 
-CREATE TABLE EMPLOYEE (Fname VARCHAR(10) NOT NULL,Lname VARCHAR(15) NOT NULL,Ssn VARCHAR(9) PRIMARY KEY,Bdate DATE,Address VARCHAR(40),Sex CHAR,Salary INT,Super_ssn VARCHAR(9),Dno INT);
+create table employee (fname varchar(10),lname varchar(15),ssn varchar(9) primary key,bdate date,address varchar(40),sex char,salary int,super_ssn varchar(9),dno int);
 
-CREATE TABLE DEPARTMENT(Dname VARCHAR(15) NOT NULL,Dnumber INT PRIMARY KEY,Mgr_ssn VARCHAR(9) NOT NULL,Mgr_start_date DATE,FOREIGN KEY (Mgr_ssn) REFERENCES EMPLOYEE(Ssn),);
+create table department(dname varchar(15) not null,dnumber int primary key,mgr_ssn varchar(9) not null,mgr_start_date date,foreign key (mgr_ssn) references employee(ssn));
 
-CREATE TABLE PROJECT(Pnumber INT PRIMARY KEY,Pname VARCHAR(20) NOT NULL,Dnum INT,FOREIGN KEY (Dnum) EFERENCES DEPARTMENT(Dnumber));
+create table project(pnumber int primary key,pname varchar(20) not null,dnum int,foreign key (dnum) references department(dnumber));
 
-CREATE TABLE WORKS_ON (Essn VARCHAR(9),Pno INT,Hours INT,PRIMARY KEY(Essn, Pno),FOREIGN KEY (Pno) REFERENCES PROJECT(Pnumber),FOREIGN KEY (Essn) REFERENCES EMPLOYEE(Ssn));
+create table works_on (essn varchar(9),pno int,hours int,primary key(essn, pno),foreign key (pno) references project(pnumber),foreign key (essn) references employee(ssn));
 
-INSERT INTO EMPLOYEE Values('John','Smith', 123456789, '09-JAN-65', '731 Fondren,
-Houston, TX', 'M', 30000, NULL, NULL);
-INSERT INTO DEPARTMENT Values('Research',5,'333445555','22-MAY-1988');
-INSERT INTO PROJECT Values(1,‘ProductX’,5);
-INSERT INTO WORKS_ON Values('123456789',1,32);
+insert into employee values('john','smith', 123456789, '09-jan-65', '731 fondren,
+houston, tx', 'm', 30000, null, null);
+insert into department values('research',5,'333445555','22-may-1988');
+insert into project values(1,'productx',5);
+insert into works_on values('123456789',1,32);
 
-SELECT Fname,Lname FROM EMPLOYEE WHERE Salary >all (SELECT Salary FROM EMPLOYEE WHERE Dno=5);
+select fname,lname from employee where salary >all (select salary from employee where dno=5);
 
-SELECT DISTINCT Essn FROM WORKS_ON WHERE PNO IN (1, 2, 3);
+select distinct essn from works_on where pno in (1, 2, 3);
 
-SELECT Pno,SUM(Hours) FROM WORKS_ON GROUP BY Pno;
+select pno,sum(hours) from works_on group by pno;
