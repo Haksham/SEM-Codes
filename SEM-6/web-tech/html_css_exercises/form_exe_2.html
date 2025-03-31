@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Order Form</title>
+</head>
+<body>
+    <form action="#" method="post" autocomplete="on">
+        
+        <fieldset>
+            <legend>Customer Info</legend>
+            
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required autofocus>
+            
+            <label for="telephone">Telephone:</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="1234567890" required pattern="\d{10}">
+            
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" multiple required>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Books</legend>
+            
+            <label for="book">Select a Book:</label>
+            <input list="book-list" id="book" name="book">
+            <datalist id="book-list">
+                <option value="The Great Gatsby">
+                <option value="To Kill a Mockingbird">
+                <option value="1984">
+                <option value="Moby Dick">
+                <option value="Pride and Prejudice">
+            </datalist>
+            
+            <label for="quantity">Quantity (Max 5):</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="5" required>
+        </fieldset>
+        
+        <button type="submit">Submit Order</button>
+    </form>
+</body>
+</html>

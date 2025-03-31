@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #container {
+            width: 80%;
+            margin: 20px auto;
+            border: 3px solid #666;
+            padding: 10px;
+        }
+        #banner {
+            width: 100%;
+            height: 80px;
+            background: lightpurple;
+            border: 3px solid purple;
+            text-align: center;
+            line-height: 80px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #nav {
+            width: 20%;
+            float: left;
+            height: 200px;
+            background: lightgreen;
+            border: 3px solid green;
+            text-align: center;
+            padding-top: 20px;
+        }
+        #nav a {
+            display: block;
+            margin: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            cursor: pointer;
+        }
+        #content {
+            width: 78%;
+            float: right;
+            height: 200px;
+            background: lightyellow;
+            border: 3px solid orange;
+            text-align: center;
+            line-height: 200px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #footer {
+            clear: both;
+            width: 100%;
+            height: 50px;
+            background: lightgray;
+            border: 3px solid gray;
+            text-align: center;
+            line-height: 50px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function changeContent(content) {
+            document.getElementById("content").innerText = content;
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="banner">Web Programming</div>
+        <div id="nav">
+            <a onclick="changeContent('Welcome to the Home Page!')">Home</a>
+            <a onclick="changeContent('Learn more about our services.')">About</a>
+            <a onclick="changeContent('Contact us for more information.')">Contact</a>
+        </div>
+        <div id="content">CSS Box Model Example</div>
+        <div id="footer">Copyright © 2025</div>
+    </div>
+</body>
+</html>

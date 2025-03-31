@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #header {
+            background: yellow;
+            text-align: center;
+            padding: 10px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #container {
+            display: flex;
+            margin: 20px;
+        }
+        #menu {
+            width: 20%;
+            padding: 10px;
+        }
+        #content {
+            width: 60%;
+            padding: 10px;
+            border-left: 1px solid black;
+        }
+        #sidebar {
+            width: 20%;
+            padding: 10px;
+            border-left: 1px dashed green;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: lightgray;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">My blog about my life</div>
+    <div id="container">
+        <nav id="menu">
+            <h3>Menu</h3>
+            <ul>
+                <li><a href="#">Today</a></li>
+                <li><a href="#">Yesterday</a></li>
+                <li><a href="#">Last week</a></li>
+                <li><a href="#">Archives</a></li>
+            </ul>
+        </nav>
+        <main id="content">
+            <article>
+                <h2>Meeting with supervisor</h2>
+                <p><strong>14 Dec 2011</strong></p>
+                <p>Today I went to the university by bus. I had a meeting with my PhD supervisor.</p>
+            </article>
+            <article>
+                <h2>New car!!!</h2>
+                <p><strong>12 Dec 2011</strong></p>
+                <p>Today I bought my new car. It’s a Honda Accord and it's really nice.</p>
+                <p>I met some friends at a pub.</p>
+            </article>
+            <article>
+                <h2>Visit my parents</h2>
+                <p><strong>10 Dec 2011</strong></p>
+                <p>Tried to contact my PhD supervisor. He was out of his office.</p>
+                <p>I visited my parents and we had a nice dinner together.</p>
+            </article>
+        </main>
+        <aside id="sidebar">
+            <h3>Last posts</h3>
+            <ul>
+                <li><a href="#">Meeting with supervisor</a></li>
+                <li><a href="#">New car!!!</a></li>
+                <li><a href="#">Visit my parents</a></li>
+            </ul>
+        </aside>
+    </div>
+    <footer>
+        Contact me: <a href="mailto:harsh@gmail.com">harsh@gmail.com</a>
+    </footer>
+</body>
+</html>
