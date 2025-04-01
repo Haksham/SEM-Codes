@@ -216,7 +216,7 @@ function hometown(){
     let name=document.getElementById("nn").value;
     let age=parseInt(document.getElementById("agg").value);
     let home=document.getElementById("hometown").value;
-    let res="Welcome: "+name+"<br>"+"Age: "+age+"<br>"+"Hometown: "+"<a href=\"https://google.com/search?q=" + home + "\">Link</a>";
+    let res="Welcome: "+name+"<br>"+"Age: "+age+"<br>"+"Hometown: "+"<a href=\"https://maps.google.com/maps?q=" + home + "\">Link</a>";
 
     document.getElementById("result").innerHTML=res;
 }
