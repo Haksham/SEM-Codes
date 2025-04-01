@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" placeholder="Name" id="nn"><br>
+  <input type="number" placeholder="Age" id="agg"><br>
+  <input type="text" placeholder="Hometown" id="hometown"><br>
+  <button onclick="hometown()">Hometown search</button><br>
+  <p id="result">result</p>
+
+</body>
+<script>
+  function hometown(){
+    let name=document.getElementById("nn").value;
+    let age=parseInt(document.getElementById("agg").value);
+    let home=document.getElementById("hometown").value;
+    let res="Welcome: "+name+"<br>"+"Age: "+age+"<br>"+"Hometown: "+"<a href=\"https://google.com/search?q=" + home + "\">Link</a>";
+
+    document.getElementById("result").innerHTML=res;
+}
+</script>
+</html>

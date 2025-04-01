@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q5 - Sum and Multiply</title>
+  </head>
+  <body>
+    <h1>Q5 - Sum and Multiply</h1>
+    <input type="text" placeholder="Enter array (e.g., 1,2,3)" id="nums" />
+    <button onclick="sums()">Sum</button>
+    <button onclick="muls()">Multiply</button>
+    <p id="result"></p>
+
+    <script>
+      function sums(){
+          let arr=document.getElementById("nums").value.split(",");
+          let res=0;
+          for(let i=0;i<arr.length;i++){
+              res+=parseInt(arr[i]);
+          }
+          document.getElementById("result").innerHTML=res;
+      }
+
+      function muls(){
+          let arr=document.getElementById("nums").value.split(",");
+          let res=1;
+          for(let i=0;i<arr.length;i++){
+              res*=parseInt(arr[i]);
+          }
+          document.getElementById("result").innerHTML=res;
+      }
+    </script>
+  </body>
+</html>

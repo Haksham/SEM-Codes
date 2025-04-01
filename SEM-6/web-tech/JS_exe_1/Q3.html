@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q3 - Check Vowel</title>
+  </head>
+  <body>
+    <input type="text" placeholder="Enter character" id="vowel" maxlength="1" />
+    <button onclick="checkvowel()">Check</button>
+    <p id="result"></p>
+
+    <script>
+      function checkvowel() {
+        var char = document.getElementById("vowel").value.toLowerCase();
+        const vowels = ["a", "e", "i", "o", "u"];
+        let res = vowels.includes(char) ? "True" : "False";
+        document.getElementById("result").innerHTML = "Is Vowel: " + res;
+      }
+    </script>
+  </body>
+</html>

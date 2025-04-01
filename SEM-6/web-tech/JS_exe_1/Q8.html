@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" placeholder="Enter ex:abc,cbf,dfd" id="longest">
+    <button onclick="longest()">Find longest word</button><br>
+    <p id="result">result</p>
+
+</body>
+<script>
+  function longest(){
+    let arr=document.getElementById("longest").value.split(",");
+    let res="";
+    for(let i=0;i<arr.length;i++){
+        if(arr[i].length>res.length){
+            res=arr[i];
+        }
+    }
+
+    document.getElementById("result").innerHTML=res+" : "+res.length;
+}
+</script>
+</html>

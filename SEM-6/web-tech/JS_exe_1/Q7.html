@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" style="width: 350px;" placeholder="Enter combination of (merry,christmas,and,happy,new,year)" id="spanish">
+  <button onclick="spanish()">Spanish</button><br>
+  <p id="result">result</p>
+
+</body>
+<script>
+  function spanish(){
+    let str=document.getElementById("spanish").value.split(" ");
+    const dic={
+        "merry":"god",
+        "christmas":"jul",
+        "and":"och",
+        "happy":"gott",
+        "new":"nytt",
+        "year":"ar"
+    }
+
+    let res="";
+    for(let i=0;i<str.length;i++){
+        if(str[i] in dic){
+            res+=dic[str[i]]+" ";
+        }
+        else{
+            res="Not matching words!!"
+        }
+    }
+    document.getElementById("result").innerHTML=res;
+}
+</script>
+</html>

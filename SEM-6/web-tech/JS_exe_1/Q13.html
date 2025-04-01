@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="number" placeholder="Enterrandom number" id="rand">
+  <button onclick="rand()">Generate</button><br>
+  <p id="result">result</p>
+
+  
+</body>
+<script>
+  function rand(){
+    let k=parseInt(document.getElementById("rand").value);
+    let arr=[];
+    let avg=0;
+    for(let i=0;i<k;i++){
+        let x=Math.floor(Math.random()*100);
+        arr.push(x);
+        avg+=x;
+    }
+    avg/=k;
+
+    document.getElementById("result").innerHTML=arr+"</br>"+"Avg:"+avg;
+}
+</script>
+</html>

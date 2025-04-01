@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q4 - Rövarspråket</title>
+  </head>
+  <body>
+    <h1>Q4 - Rövarspråket</h1>
+    <input type="text" placeholder="Enter text" id="rov" />
+    <button onclick="translateTxt()">Translate</button>
+    <p id="result"></p>
+
+    <script>
+      function translateTxt() {
+        var str = document.getElementById("rov").value.toLowerCase();
+        let res = "";
+        for (let i = 0; i < str.length; i++) {
+          if ("aeiou ".includes(str[i])) {
+            res += str[i];
+          } else {
+            res += str[i] + "o" + str[i];
+          }
+        }
+        document.getElementById("result").innerHTML = res;
+      }
+    </script>
+  </body>
+</html>

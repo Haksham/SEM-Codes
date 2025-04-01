@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <input type="text" placeholder="Enter text" id="freq">
+  <button onclick="findfreq()">Find frequency</button><br>
+  <p id="result">result</p>
+
+</body>
+<script>
+  function findfreq(){
+    let str=document.getElementById("freq").value;
+    let obj={}
+
+    for(let i=0;i<str.length;i++){
+        if(!(str[i] in obj)){
+            obj[str[i]]=1;
+        }
+        else{
+            obj[str[i]]+=1;
+        }
+    }
+    document.getElementById("result").innerHTML=JSON.stringify(obj);
+}
+</script>
+</html>

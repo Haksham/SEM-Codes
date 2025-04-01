@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q2 - Find Max of 3</title>
+  </head>
+  <body>
+    <h1>Q2 - Find Max of 3</h1>
+    <input type="number" placeholder="Number 1" id="n1" />
+    <input type="number" placeholder="Number 2" id="n2" />
+    <input type="number" placeholder="Number 3" id="n3" />
+    <button onclick="max3()">Find Max</button>
+    <p id="result"></p>
+
+    <script>
+      function max3() {
+        var num1=parseInt(document.getElementById("n1").value);
+        var num2=parseInt(document.getElementById("n2").value);
+        var num3=parseInt(document.getElementById("n3").value);
+        let res=0;
+        if (num1>num2){res= num1;}
+        if(num3>res){res=num3;}
+        else {res= num2;}
+        document.getElementById("result").innerHTML = res;
+      }
+    </script>
+  </body>
+</html>

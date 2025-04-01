@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q1 - Find Max</title>
+  </head>
+  <body>
+    <h1>Q1 - Find Max</h1>
+    <input type="number" placeholder="Number 1" id="num1" />
+    <input type="number" placeholder="Number 2" id="num2" />
+    <button onclick="max()">Find Max</button>
+    <p id="result"></p>
+
+    <script>
+      function max() {
+        var num1=parseInt(document.getElementById("num1").value);
+        var num2=parseInt(document.getElementById("num2").value);
+
+        let res=0;
+        if (num1>num2){res= num1;}
+          else {res= num2;}
+
+          document.getElementById("result").innerHTML = res;
+      }
+    </script>
+  </body>
+</html>

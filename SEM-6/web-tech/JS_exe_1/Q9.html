@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" placeholder="Enter arr of words ex:abc,dfg,vv" style="width: 200px;" id="wd">
+    <input type="number" placeholder="Integer i" id="inti">
+    <button onclick="findlong()">Find words greater than i</button><br>
+    <p id="result">result</p>
+
+</body>
+<script>
+  function findlong(){
+    let arr=document.getElementById("wd").value.split(",");
+    let k=document.getElementById("inti").value;
+    let res=[];
+
+    for(let i=0;i<arr.length;i++){
+        if(arr[i].length>parseInt(k)){
+            res.push(arr[i]);
+        }
+    }
+    document.getElementById("result").innerHTML=res;
+}
+</script>
+</html>

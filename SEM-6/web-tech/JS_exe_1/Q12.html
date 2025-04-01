@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <button onclick="getnames()">Harness names</button><br>
+  <p id="result">result</p>
+
+</body>
+<script>
+  function getnames(){
+    let names = [];
+    while (true) {
+        let name = prompt("Enter a name (or click Cancel to finish):");
+        if (name === null) {
+            break;
+        }
+        names.push(name);
+    }
+    names.sort();
+    let orderedList = "<ol>";
+    for (let i = 0; i < names.length; i++) 
+    {orderedList += `<li>${names[i]}</li>`;}
+    orderedList += "</ol>";
+    document.getElementById("result").innerHTML = orderedList;
+}
+</script>
+</html>

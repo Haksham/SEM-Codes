@@ -155,7 +155,6 @@ function findfreq(){
 
 //Q.11
 function solve(){
-    let res=0;
     let str=document.getElementById("equation").value;
     document.getElementById("result").innerHTML=eval(str);
 }
