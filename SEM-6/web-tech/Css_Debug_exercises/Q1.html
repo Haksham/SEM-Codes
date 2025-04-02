@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debugging Exercise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; 
+        }
+        * {
+            box-sizing: inherit;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+        main {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 20px;
+        }
+        .content-box {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            clear: both;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr; 
+                padding: 10px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Debugging Exercise</h1>
+    </header>
+    <main>
+        <div class="content-box">
+            <h2>Content Box 1</h2>
+            <p>CSS is the language we use to style an HTML document. CSS describes how HTML elements should be displayed.</p>
+        </div>
+        <div class="content-box">
+            <h2>Content Box 2</h2>
+            <p>CSS is the language we use to style an HTML document. CSS describes how HTML elements should be displayed.</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Debugging Exercise</p>
+    </footer>
+</body>
+</html>
