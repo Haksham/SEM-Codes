@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+    <!-- Harshvarshan Mehta ( 1MS22CS062 )-->
+<body>
+    <script>
+        let studentName = "harsh";
+        let activityScores = [10, 20, 15, 5]; // 1. global var
+
+        function tot() { // 2. function to get total
+            let totalScore = 0;
+            for (let score of activityScores) {
+                totalScore += score;
+            }
+            return totalScore;
+        }
+
+        const evalRank = function(totalScore) {   // 3. function to eval expression
+            if (totalScore > 40) {
+                return "Star Performer";
+            } else if (totalScore >= 30 && totalScore <= 40) {
+                return "Active";
+            } else {
+                return "Inactive";
+            }
+        };
+
+        const calcAvg = function() { // 4. anonymous function
+            let totalScore = tot();
+            return totalScore / activityScores.length;
+        };
+
+        function generateReport() { // 5. lexical scope task
+            function showDetails() {
+                let totalScore = tot();
+                let rank = evalRank(totalScore);
+                let ang = calcAvg();
+
+                console.log("Student: " + studentName);
+                console.log("Activity Scores: " + activityScores);
+                console.log("Total Score: " + totalScore);
+                console.log("Average Score: " + ang);
+                console.log("Rank: " + rank);
+            }
+            showDetails();
+        }
+        var category = "Star Performer"; // 6. hoisting
+        
+        if (true) {
+            var testScopeVar = "This is function scope"; // 7. isolation
+        }
+        
+        console.log(testScopeVar); 
+        let totalScore = tot();
+        let rank = evalRank(totalScore);
+        let averageScore = calcAvg();
+
+        console.log("Student: " + studentName);
+        console.log("Activity Scores: " + activityScores);
+        console.log("Total Score: " + totalScore);
+        console.log("Average Score: " + averageScore);
+        console.log("Rank: " + rank);
+        
+        generateReport();
+    </script>
+</body>
+</html>
+        <!-- Harshvarshan Mehta ( 1MS22CS062 )-->
+<!-- 
+Learnings:
+1. Scope in JavaScript is where we can use variable. 
+2. If variable is in global scope, we can use it anywhere in the code. 
+3. If variable is inside function, we can use it only inside that function. 
+4. When we use var to make variable, we can use it anywhere in the function, even if inside if or for block.  -->

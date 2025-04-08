@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quiz App</title>
+        <!-- Harshvarshan Mehta ( 1MS22CS062 )-->
+    <script>
+        var score = 0;
+        function que1() {
+            var ans = prompt("What is 2 + 2?");
+            if (ans === "4") {
+                alert("Correct!");
+                score++;
+            } else {
+                alert("Wrong!");
+            }
+        }
+        var que2 = function() {
+            var ans = prompt("What is the capital of France?");
+            if (ans === "paris") {
+                alert("Correct!");
+                score++;
+            } else {
+                alert("Wrong!");
+            }
+        };
+        function que3() {
+            var ans = prompt("What is 5 * 3?");
+            if (ans === result) {
+                alert("Correct!");
+                score++;
+            } else {
+                alert("Wrong!");
+            }
+            var result = "15"; // hoisting effect
+            // variable result exists before the assignment, but it will be undefined
+        }
+        function review() {
+            try {
+                alert("Your score is: " + score);
+                alert("Local variable: " + ans);
+            } catch (e) {
+                alert("error: " + e.message);
+            }
+        }
+        function start() {
+            que1();
+            que2();
+            que3();
+            alert("total score: " + score);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="start()">Start Quiz</button>
+    <button onclick="review()">Review Score</button>
+</body>
+</html>
+    <!-- Harshvarshan Mehta ( 1MS22CS062 )-->
