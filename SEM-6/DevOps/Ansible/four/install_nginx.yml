@@ -1,0 +1,72 @@
+---
+- name: Install and Configure Nginx
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update package lists (Debian/Ubuntu)
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Update package lists (RedHat/CentOS)
+      yum:
+        update_cache: yes
+      when: ansible_os_family == "RedHat"
+
+    - name: Install Nginx (Debian/Ubuntu)
+      apt:
+        name: nginx
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install Nginx (RedHat/CentOS)
+      yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Ensure Nginx service is enabled and running
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Deploy custom index.html
+      copy:
+        content: "<h1>Welcome to Harsh's custom Nginx page!</h1>"
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Open port 80 for HTTP traffic (ufw - Debian/Ubuntu)
+      ufw:
+        rule: allow
+        port: '80'
+        proto: tcp
+      when: ansible_os_family == "Debian" and ansible_distribution == "Ubuntu"
+
+    - name: Open port 80 for HTTP traffic (firewalld - RedHat/CentOS)
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+      when: ansible_os_family == "RedHat"
+
+    - name: Reload firewalld (RedHat/CentOS)
+      service:
+        name: firewalld
+        state: reloaded
+      when: ansible_os_family == "RedHat"
+
+    - name: Verify Nginx service is running
+      service:
+        name: nginx
+        state: started
+
+    - name: Verify Nginx is accessible (HTTP)
+      uri:
+        url: "http://{{ ansible_host }}"
+        status_code: 200
+      register: result
+      failed_when: result.status != 200

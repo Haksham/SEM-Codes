@@ -1,0 +1,16 @@
+---
+- name: Check System Uptime
+  hosts: servers
+  gather_facts: no
+  tasks:
+    - name: Run uptime command
+      command: uptime
+      register: uptime_output
+
+    - name: Display uptime result
+      debug:
+        msg: "System Uptime: {{ uptime_output.stdout }}"
+
+
+      debug:
+        msg: "System Uptime: {{ uptime_output.stdout }}"

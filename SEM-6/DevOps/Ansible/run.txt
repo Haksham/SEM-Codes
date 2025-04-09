@@ -1,0 +1,12 @@
+run commands:
+
+one ping: ansible -i inventory.ini servers -m ping
+one: ansible-playbook -i inventory.ini uptime_check.yml
+
+two: ansible-playbook -i inventory2.ini create.yml -k --ask-become-pass
+
+three: ansible-playbook -i inventory2.ini system_info.yml
+
+four: ansible-playbook -i inventory.ini install_nginx.yml -k --ask-become-pass
+
+five: ansible-playbook assignment_uptime.yml -i inventory.ini

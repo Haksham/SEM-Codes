@@ -1,0 +1,14 @@
+---
+- name: Retrieve and display system information
+  hosts: remote_machines
+  gather_facts: yes
+
+  tasks:
+    - name: Display system information
+      debug:
+        msg: |
+          Hostname: {{ ansible_hostname }}
+          Operating System: {{ ansible_distribution }} {{ ansible_distribution_version }}
+          Kernel Version: {{ ansible_kernel }}
+          CPU Model: {{ ansible_processor }}
+          Total Memory: {{ ansible_memtotal_mb }} MB

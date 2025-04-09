@@ -1,0 +1,23 @@
+---
+- name: Create a file on the remote machine
+  hosts: remote_machines
+  become: yes
+
+  tasks:
+    - name: Create sample_file.txt
+      ansible.builtin.file:
+        path: sample_file.txt
+        state: touch
+        owner: cselab3
+        group: cselab3
+        mode: '0644'
+
+    - name: Write content to sample_file.txt (optional)
+      ansible.builtin.copy:
+        content: "Hello, this is a test file created by Harsh."
+        dest: sample_file.txt
+        mode: '0644'
+      when: write_content is defined and write_content == "yes"
+
+  vars:
+    write_content: "yes"  # Set to "yes" to include content, otherwise remove this line or set to "no"

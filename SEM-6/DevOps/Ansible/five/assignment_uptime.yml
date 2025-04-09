@@ -1,0 +1,25 @@
+---
+- name: Execute uptime command on remote servers
+  hosts: webservers
+  gather_facts: yes
+  tasks:
+    - name: Run uptime command
+      command: uptime
+      register: uptime_output
+
+    - name: Store uptime output on control machine
+      local_action:
+        module: lineinfile
+        path: "{{ ansible_env.HOME }}/remote_uptime.log"
+        line: "{{ inventory_hostname }} - {{ ansible_date_time.iso8601 }} - {{ uptime_output.stdout }}"
+        create: yes
+      delegate_to: localhost
+
+- name: Set up cron job on control machine
+  hosts: localhost
+  tasks:
+    - name: Create cron job to run playbook every 5 minutes
+      cron:
+        name: "Run uptime playbook"
+        minute: "*/1"
+        job: "ansible-playbook {{ ansible_env.PWD }}/assignment_uptime.yml -i {{ ansible_env.PWD }}/inventory.ini"
