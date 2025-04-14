@@ -1,0 +1,33 @@
+
+
+1. 
+    a) Write a C program to display the file content in reverse order using lseek system call.
+    b) Write a C program to create a child process and show how parent and child processes will share the text file and justify that both parent and child share the same file offset.
+
+2. 
+    a) Write a C program to display various details of a file using stat structure (At least 5 fields).
+    b) Write a C program to demonstrate the creation of soft links and  hard links.
+
+3. 
+    a) Write a C program to remove empty files from the given directory.
+    b) Write a C program to implement ls  –li command which lists the files in a specified directory. Your program should Print 5 attributes of files.
+
+4. 
+    a) Write a program to copy access and modification time of a file to another file using utime function.
+    b) Write a program to read n characters from a file and append them back to the same file using dup2 function.
+
+5.
+    a) Write a C program that takes the file name as an argument and prints the type of the given file.
+    b) Write a program to differentiate between dup and dup2 functions
+
+6.
+    a) Write a C program to demonstrate the usage of umask and chmod functions.
+    b) Write a C program
+    i. To read the first 20 characters from a file
+    ii. seek to 10th byte from the beginning and display 20 characters from there
+    iii. seek 10 bytes ahead from the current file offset and display 20 characters
+    iv. Display the file size
+
+7.
+    a)  Demonstrate the working of wait and waitpid system calls with a program
+    b) Write a program to demonstrate the zombie state of a process and provide the solution for the same.  
