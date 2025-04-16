@@ -1,37 +1,31 @@
-#include <sys/stat.h>
-#include <stdlib.h>
 #include <stdio.h>
-int main(int argc, char *argv[])
-{
-    struct stat buf;
-    char *ptr;
-    int i;
+#include <sys/stat.h>
+#include<fcntl.h>
 
-    	lstat(argv[i], &buf);
+int main() {
     
-        if (S_ISREG(buf.st_mode))
-            ptr = "regular";
-        else if (S_ISDIR(buf.st_mode))
-            ptr = "directory";
-        else if (S_ISCHR(buf.st_mode))
-            ptr = "character special";
-        else if (S_ISBLK(buf.st_mode))
-            ptr = "block special";
-        else if (S_ISFIFO(buf.st_mode))
-            ptr = "fifo";
-        else if (S_ISLNK(buf.st_mode))
-            ptr = "symbolic link";
-        else if (S_ISSOCK(buf.st_mode))
-            ptr = "socket";
-        else
-            ptr = "unknown mode";
+    char filename[20];
+    struct stat st;
 
-        printf("%s\n", ptr);
+    printf("Enter the filename: ");
+    scanf("%s", filename);
+    lstat(filename, &st);
+
+
+    if (S_ISREG(st.st_mode))      printf("Regular file\n");
+    else if (S_ISDIR(st.st_mode)) printf("Directory\n");
+    else if (S_ISLNK(st.st_mode)) printf("Symbolic link\n");
+    else if (S_ISCHR(st.st_mode)) printf("Character device\n");
+    else if (S_ISBLK(st.st_mode)) printf("Block device\n");
+    else if (S_ISFIFO(st.st_mode))printf("FIFO (named pipe)\n");
+    else if (S_ISSOCK(st.st_mode))printf("Socket\n");
+    else                          printf("Unknown file type\n");
+
     return 0;
 }
 
 // run: gcc p1.c
-// run: ./a.out file1
+// run: ./a.out 
 
 // note: dont support multiple file type , only one file input-output
 // no error will be displayed (be careful)

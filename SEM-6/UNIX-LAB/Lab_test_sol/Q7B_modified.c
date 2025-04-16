@@ -4,14 +4,12 @@
 #include <sys/wait.h>
 
 int main(void) {
-    pid_t pid, pid1, pid2, pid3;
+    pid_t pid1, pid2, pid3;
 
-    if ((pid = fork()) < 0) {
-        printf("fork error\n");
-    } else if (pid == 0) { // first child
-        if ((pid3 = fork()) < 0) {
-            printf("fork error\n");
-        } else if (pid3 == 0) {
+    pid1 = fork();
+    if (pid1 == 0){ 
+        pid2 = fork();
+        if (pid2 == 0) {
             sleep(5);
             printf("Child pid is: %d\n", getpid());
             printf("Second child, parent pid = %ld\n", (long)getppid());
@@ -22,9 +20,9 @@ int main(void) {
         }
     }
 
-    pid2 = waitpid(pid, NULL, 0);
+    pid3 = waitpid(pid1, NULL, 0);
 
-    printf("Terminated child's pid: %d\n", pid2);
+    printf("Terminated child's pid: %d\n", pid3);
 
     exit(0);
 }

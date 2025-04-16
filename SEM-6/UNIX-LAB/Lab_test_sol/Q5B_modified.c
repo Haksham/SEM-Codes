@@ -4,18 +4,14 @@
 #include <stdlib.h>
 
 int main() {
-    int fd1, fd2, fd3;
 
-    fd1 = open("example.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    fd2 = dup(fd1);
-    fd3 = 10;
-    dup2(fd1, fd3);
+    int fd1 = open("example.txt", O_WRONLY);
+    int fd2 = dup(fd1);
+    int fd3=dup2(fd1, 10);
 
     write(fd1, "Writing via fd1 \n", 16);
     write(fd2, "Writing via fd2 \n", 16);
-    write(fd3, "Writing via fd3 (dup2)\n", 23);
-
-    printf("Check 'example.txt' for the results.\n");
+    write(fd3, "Writing via fd3 (dup2)\n", 50);
     return 0;
 }
 // run: gcc p1.c

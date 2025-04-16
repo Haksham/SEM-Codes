@@ -1,26 +1,27 @@
 // not given in previous ques
-
 #include <stdio.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <time.h>
+#include <fcntl.h>
 
-int main(int argc, char *argv[]) {
-    struct stat fileStat;
+int main() {
+    struct stat st;
 
-    printf("File Name       : %s\n", argv[1]);
+    open("src.txt",O_RDONLY);
     
-    printf("Hard Links      : %ld\n", fileStat.st_nlink);
-    printf("Last Access Time: %s", ctime(&fileStat.st_atime));
-    printf("Inode Number    : %ld\n", fileStat.st_ino);
-    printf("User ID (UID)   : %d\n", fileStat.st_uid);
-    printf("Group ID (GID)  : %d\n", fileStat.st_gid);
+    printf("Hard Links      : %ld\n", st.st_nlink);
+    printf("Mode            : %o\n", st.st_mode);
+    printf("Inode Number    : %ld\n", st.st_ino);
+    printf("User ID (UID)   : %d\n", st.st_uid);
+    printf("Group ID (GID)  : %d\n", st.st_gid);
 
     return 0;
 }
 
+
 // run: gcc p1.c
-// run: ./a.out <file>
+// run: ./a.out
 
 // note: 
 // Do on your own risk
