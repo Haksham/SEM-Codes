@@ -20,4 +20,4 @@ int main() {
 // create 2 files t1.txt , t2.txt
 // run: ./a.out t1.txt t2.txt
 
-// note: errors will not be displayed.
+// note: errors will not be displayed if code doesnt work.

@@ -19,4 +19,4 @@ int main() {
 // run: ./a.out
 // run: cat example.txt
 
-//note: no errors will be displayed.
+//note: no errors will be displayed if code doesnt work.

@@ -1,0 +1,56 @@
+
+1. a) Write a C program to display the file content in reverse order using lseek system call. 
+   b) Write a C program to create a child process and show how parent and child processes will share the text file and justify that both parent and child share the same file offset.
+
+2. a) Write a C program to display various details of a file using stat structure (At least 5 fields).  
+   b) Write a C program to simulate system function.  
+
+3. a) Write a C program to remove empty files from the given directory.  
+   b) Write a C program to implement ls –li command which lists the files in a specified directory. Your program should print 5 attributes of files. | CO1 | PO 1-3  
+
+4. a) Write a C program to demonstrate the creation of soft links and hard links. 
+   b) Write a C program to  
+      i. To create a child process.  
+      ii. The child should execute an interpreter file by passing a few arguments  
+      iii. Create an interpreter file that has the path of echoall.c file and pass one argument  
+      iv. Create echoall.c file which prints the arguments received from both child process and interpreter file. 
+
+   b) Write a C program to create a child process and show how parent and child processes will share the text file and justify that both parent and child share the same file offset. | CO2, CO3 | PO 1-3  
+
+5. a) Write a program to copy access and modification time of a file to another file using utime function.  
+   b) Write a C program using sigaction system call which calls a signal handler on SIGINT signal and then reset the default action of the SIGINT signal.  
+
+6. a) Write a program to read n characters from a file and append them back to the same file using dup2 function.
+   b) Consider the last 100 bytes as a region. Write a C program to check whether the region is locked or not. If the region is locked, print pid of the process which has locked. If the region is not locked, lock the region with an exclusive lock, read the last 50 bytes and unlock the region. | PO 1-3  
+
+7. a) Write a C program to illustrate the effect of setjmp and longjmp functions on register and volatile variables. 
+   b) C program to simulate copy command by accepting the filenames from the command line. Report all errors.  
+
+8. a) Write a C program that takes the file name as an argument and prints the type of the given file.  
+   b) Write a C program to perform the following operations  
+      i. To create a child process  
+      ii. The child process should execute a program (using exec()) to show the use of the access function  
+      iii. The parent process should wait for the child process to exit  
+      iv. Also print the necessary process IDs  
+
+9. a) Write a C program to demonstrate the usage of umask and chmod functions.  
+   b) Write a C program  
+      i. To read the first 20 characters from a file  
+      ii. Seek to 10th byte from the beginning and display 20 characters from there  
+      iii. Seek 10 bytes ahead from the current file offset and display 20 characters  
+      iv. Display the file size 
+
+10. a) Write a C program such that it initializes itself as a Daemon Process.  
+    b) Demonstrate the working of wait and waitpid system calls with a program.
+
+11. a) Write a program to differentiate between dup and dup2 functions.
+    b) Write a program to perform the following operations  
+       i) To create a child process  
+       ii) The child process should execute a separate program (using exec function) that calculates the addition of two numbers by passing two integer values.  
+       iii) The parent process should wait for a child to complete  
+
+12. a) Write a program to demonstrate the zombie state of a process and provide the solution for the same.
+    b) Write a C program to perform the following operations  
+       i) To create a child and parent process with the use of an echoall file.  
+       ii) The Child should execute a process that prints the user-defined values of environment variables  
+       iii) The Parent should execute a process that prints default values for the environment variables.  
