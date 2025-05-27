@@ -5,13 +5,7 @@
 
 int my_sys(const char *cm) {
 
-    pid_t pid = fork();
-    if (pid == 0) {
-        execl("/bin/sh", "sh", "-c", cm, (char *)NULL);
-        printf("execerror\n");
-        exit(EXIT_FAILURE);
-    }
-    waitpid(pid, NULL, 0);
+    execl("/bin/sh", "sh", "-c", cm, (char *)NULL);
     return 0;
 }
 
