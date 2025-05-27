@@ -12,10 +12,9 @@ int main() {
     return 0;
 }     
 
-// run: gcc p1.c
-// run: ./a.out file1
-// file1 should be non existent.
-// run: ls -l file1
+// gcc p1.c
+// ./a.out
+// run: ls -l demo.txt
 
 // or can do both chmod and umask as separate codes files and then show permission by : ls -l file1.
 // note: no error to be displayed.
