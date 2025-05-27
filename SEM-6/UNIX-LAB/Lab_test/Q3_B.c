@@ -7,12 +7,12 @@
 int main()
 {
 	struct dirent *dir;
-	struct stat mystat;
+	struct stat st;
 	DIR *dp=opendir(".");
 	while(dir = readdir(dp))
 	{
 		printf("\n%ld %o %d %d %s %s\n",
-            mystat.st_ino,mystat.st_mode,mystat.st_uid,mystat.st_gid,ctime(&mystat.st_atime),dir->d_name);
+            st.st_ino,st.st_mode,st.st_uid,st.st_gid,ctime(&st.st_atime),dir->d_name);
 	}
 }
 
