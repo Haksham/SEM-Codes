@@ -12,12 +12,7 @@ int main() {
     return 0;
 }
 
-// run: gcc p1.c
-
-// create t1.txt with some text
-// Hard link-run : ./a.out t1.txt t2.txt
-
-// remove t2.txt ,run: rm t2.txt
-// Soft link-run : ./a.out t2.txt t2.txt ln
-
-//note: no errors will be shown if code dosent work.
+// gedit test.txt
+// gcc p1.c
+// ./a.out
+// ls -l

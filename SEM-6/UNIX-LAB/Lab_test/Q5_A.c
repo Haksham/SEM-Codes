@@ -7,10 +7,8 @@ int main() {
     struct utimbuf tt;
 
     stat("src.txt", &st);
-
     tt.actime = st.st_atime; 
     tt.modtime = st.st_mtime;
-
     utime("dest.txt", &tt);
     
     return 0;

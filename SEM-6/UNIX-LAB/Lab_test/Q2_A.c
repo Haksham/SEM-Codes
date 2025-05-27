@@ -1,23 +1,21 @@
-#include <stdio.h>
 #include <unistd.h>
+#include <stdio.h>
+#include <sys/stat.h>
 
 int main() {
+    struct stat fs;
+    lstat("sample.txt", &fs);
 
-    link("test.txt", "hardlink.txt");
-    printf("Hard link created successfully.\n");
-
-    symlink("test.txt", "softlink.txt");
-    printf("Soft link created successfully.\n");
+    printf("Mode: \t\t\t%o\n", fs.st_mode & 07777);
+    printf("Size: \t\t\t%lu bytes\n", fs.st_size);
+    printf("Number of Links: \t%lu\n", fs.st_nlink);
+    printf("Inode: \t\t\t%lu\n", fs.st_ino); 
+    printf("Block Size: \t\t%lu\n", fs.st_blksize);
 
     return 0;
 }
 
-// run: gcc p1.c
-
-// create t1.txt with some text
-// Hard link-run : ./a.out t1.txt t2.txt
-
-// remove t2.txt ,run: rm t2.txt
-// Soft link-run : ./a.out t2.txt t2.txt ln
-
-//note: no errors will be shown if code doesnt work.
+// gedit p1.c
+// gedit sample.txt
+// gcc p1.c
+// ./a.out
