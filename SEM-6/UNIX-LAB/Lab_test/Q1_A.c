@@ -16,10 +16,12 @@ int main(){
 	return 0;
 }
 
-// make src.txt with some text and dest.txt as empty
-// run: gcc p1.c
-// ./a.out src.txt dest.txt
+// gedit p1.c
+// gedit src.txt ("harsh codes")
+// touch dest.txt (empty file)
+// gcc p1.c
+// ./a.out
+// cat dest.txt
 
-// Do on your own risk
-// This code will not show you errors if they occur.
-// Then you have to debug yourself.
+// This program reads the contents of "src.txt" in reverse order and writes them to "dest.txt".
+// The output will be "sedoc hsrah" in "dest.txt".

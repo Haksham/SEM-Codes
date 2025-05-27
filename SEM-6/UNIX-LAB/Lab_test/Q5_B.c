@@ -30,3 +30,5 @@ int main() {
 // gedit p1.c
 // gcc p1.c
 // ./a.out
+
+// Press Ctrl+C to trigger the signal handler.

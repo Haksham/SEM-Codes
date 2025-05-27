@@ -7,7 +7,7 @@
 
 int main(){
 	
-    int file=open("rex.txt",O_RDONLY);
+    int file=open("test.txt",O_RDONLY);
     char buf[20];
     struct stat st;
 	

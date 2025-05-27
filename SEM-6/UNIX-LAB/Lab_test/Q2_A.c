@@ -16,6 +16,6 @@ int main() {
 }
 
 // gedit p1.c
-// gedit sample.txt
+// gedit sample.txt ("HelloWorld!")
 // gcc p1.c
 // ./a.out

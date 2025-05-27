@@ -21,6 +21,7 @@ int main() {
     return 0;
 }
 
-// commands:
 // gcc p1.c
 // ./a.out
+
+// The output will show the execution of the command "ls -li" in the child process.

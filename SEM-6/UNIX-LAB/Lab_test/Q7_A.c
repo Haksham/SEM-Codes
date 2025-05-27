@@ -30,3 +30,5 @@ int main(void) {
 // gedit p1.c
 // gcc p1.c
 // ./a.out
+
+// The output will show the values of globval, statval, regval, and volval before and after the longjmp call.

@@ -24,8 +24,9 @@ int main() {
     return 0;
 }
 
-// run: gcc p1.c
-// run: ./a.out 
+// gedit p1.c
+// gedit sample.txt ("HelloWorld!")
+// gcc p1.c
+// ./a.out
 
-// note: dont support multiple file type , only one file input-output
-// no error will be displayed (be careful)
+// Enter the filename: sample.txt

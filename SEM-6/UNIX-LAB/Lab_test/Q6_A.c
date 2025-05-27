@@ -15,6 +15,11 @@ int main() {
     return 0;
 }
 
-// run: gcc p1.c
-// create a test.txt with "harsh codes"
-// run: ./a.out
+// gedit p1.c
+// gedit test.txt ("harsh codes")
+// gcc p1.c
+// ./a.out
+// cat test.txt
+
+// This program reads the first 5 characters from "test.txt" and appends them to the end of the file.
+// The output will be "harsh" appended to the end of the file.

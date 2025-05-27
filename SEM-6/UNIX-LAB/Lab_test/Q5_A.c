@@ -14,8 +14,10 @@ int main() {
     return 0;
 }
 
-// run: gcc p1.c
-// create 2 files t1.txt , t2.txt
-// run: ./a.out t1.txt t2.txt
-
-// note: errors will not be displayed if code doesnt work.
+// gedit p1.c
+// touch src.txt
+// touch dest.txt (create dest file 1 min after creating src file)
+// la -l (check the access and modification times of src.txt and dest.txt)
+// gcc p1.c
+// ./a.out
+// ls -l src.txt dest.txt (recheck the access and modification times which should now match)

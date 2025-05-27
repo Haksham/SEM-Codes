@@ -33,7 +33,7 @@ return 0;
 
 // gedit inter.c
 // gedit echoall.c
-pwd (copy path)
+// pwd (run on new terminal of same folder)(copy path)
 // gedit textinterpreter (paste path + /echoall)
 // gcc -o inter inter.c
 // gcc -o echoall echoall.c

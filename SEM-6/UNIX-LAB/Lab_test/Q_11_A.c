@@ -18,5 +18,3 @@ int main() {
 // make an example.txt file
 // run: ./a.out
 // run: cat example.txt
-
-//note: no errors will be displayed if code doesnt work.

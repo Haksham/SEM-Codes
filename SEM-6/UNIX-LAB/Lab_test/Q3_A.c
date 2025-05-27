@@ -25,4 +25,4 @@ int main()
 // run: ./a.out
 // run: ls
 
-// note: errors will not be displayed if code doesnt work.
+// The program will delete all empty files in the current directory.

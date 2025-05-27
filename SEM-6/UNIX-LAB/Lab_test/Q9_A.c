@@ -5,8 +5,8 @@
 
 int main() {
     umask(077); // Set umask to 077 (no permissions for group and others
-    open("myfile.txt", O_CREAT | O_WRONLY, 0666); // Create a file with default permissions 0666 (rw-rw-rw-)
-    chmod("myfile.txt", 0644); // Change file permissions to 644 (rw-r--r--)
+    open("file1.txt", O_CREAT | O_WRONLY, 0666); // Create a file with default permissions 0666 (rw-rw-rw-)
+    chmod("file1.txt", 0644); // Change file permissions to 644 (rw-r--r--)
     return 0;
 }
 

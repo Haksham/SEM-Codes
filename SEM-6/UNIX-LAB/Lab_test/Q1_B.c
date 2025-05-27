@@ -21,10 +21,10 @@ int main() {
     return 0;
 }
 
-// create a test.txt with "helloworld"
-// run: gcc p1.c
-// run: ./a.out
+// gedit p1.c
+// gedit src.txt ("helloworld")
+// gcc p1.c
+// ./a.out
 
-// Do on your own risk
-// This code will not show you errors if they occur.
-// Then you have to debug yourself.
+// The output will show the parent and child processes reading the first 5 characters from "src.txt".
+// The parent process will read "hello" and the child process will also read "hello".

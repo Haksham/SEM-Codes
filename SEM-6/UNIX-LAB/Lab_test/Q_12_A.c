@@ -28,5 +28,3 @@ int main(void) {
 }
 // run: gcc p1.c
 // run: ./a.out
-
-// not much changes *.*
