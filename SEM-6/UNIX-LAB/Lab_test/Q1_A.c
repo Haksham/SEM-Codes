@@ -5,7 +5,7 @@ int main(){
 	
 	int src=open("src.txt",O_RDONLY);
 	int dest=open("dest.txt",O_WRONLY);
-	char buf;
+	char buf[10];
 	int pos=lseek(src,0,SEEK_END);
 	
 	while(--pos>=0){

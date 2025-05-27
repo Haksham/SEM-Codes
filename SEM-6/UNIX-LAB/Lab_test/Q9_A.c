@@ -4,17 +4,16 @@
 #include <unistd.h>
 
 int main() {
-
-    umask(022);
-    open("demo.txt", O_CREAT | O_WRONLY);
-    chmod("demo.txt", 0704);
-
+    umask(077); // Set umask to 077 (no permissions for group and others
+    open("myfile.txt", O_CREAT | O_WRONLY, 0666); // Create a file with default permissions 0666 (rw-rw-rw-)
+    chmod("myfile.txt", 0644); // Change file permissions to 644 (rw-r--r--)
     return 0;
-}     
+}
 
-// gcc p1.c
-// ./a.out
-// run: ls -l demo.txt
+// run: gcc p1.c
+// run: ./a.out file1
+// file1 should be non existent.
+// run: ls -l file1
 
 // or can do both chmod and umask as separate codes files and then show permission by : ls -l file1.
 // note: no error to be displayed.
