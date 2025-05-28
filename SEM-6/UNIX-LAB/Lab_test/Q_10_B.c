@@ -4,8 +4,8 @@
 #include <sys/wait.h>
 
 int main() {
-    pid_t pid1 = fork();
-    pid_t pid2 = fork();
+    int pid1 = fork();
+    int pid2 = fork();
 
     if (pid1 == 0) {
         printf("first pid: %d\n", getpid());

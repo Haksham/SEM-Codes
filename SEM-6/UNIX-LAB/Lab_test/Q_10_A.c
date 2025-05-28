@@ -7,25 +7,20 @@
 #include <fcntl.h>
 
 void create_daemon() {
-    pid_t pid = fork();
-    if (pid > 0) {
-        exit(EXIT_SUCCESS); 
+    if (fork() > 0) {
+        exit(0); 
     }
     setsid();
     umask(0);
     chdir("/");
-    open("/dev/null", O_RDWR);
 }
 
 int main() {
     create_daemon();
     openlog("daemon_ex", LOG_PID, LOG_DAEMON);
-    while (1) {
-        syslog(LOG_NOTICE, "Daemon is running...");
-        sleep(30);
-    }
-    closelog();
-    return EXIT_SUCCESS;
+    syslog(LOG_NOTICE, "Daemon is running...");
+
+    return 0;
 }
 
 // gedit p1.c
