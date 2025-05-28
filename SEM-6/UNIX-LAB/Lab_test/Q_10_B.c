@@ -4,7 +4,6 @@
 #include <sys/wait.h>
 
 int main() {
-    int st;
     pid_t pid1 = fork();
     pid_t pid2 = fork();
 
@@ -20,7 +19,7 @@ int main() {
         exit(0);
     }
 
-    wait(&st);
+    wait(NULL);
     printf("first wait\n");
 
     waitpid(pid2, &st, 0);
