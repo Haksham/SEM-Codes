@@ -5,7 +5,7 @@
 jmp_buf jmpbuffer;
 int globval = 1;
 
-int main(void) {
+int main() {
     register int regval = 1;   
     volatile int volval = 1;    
     static int statval = 1;  
