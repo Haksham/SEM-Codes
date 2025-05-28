@@ -22,7 +22,7 @@ int main() {
     wait(NULL);
     printf("first wait\n");
 
-    waitpid(pid2, &st, 0);
+    waitpid(pid2, NULL, 0);
     printf("second wait\n");
 
     return 0;
