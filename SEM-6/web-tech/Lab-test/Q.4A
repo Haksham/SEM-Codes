@@ -1,0 +1,28 @@
+import React, { useState } from 'react';
+
+function EmployeeInfo() {
+  const [employee, setEmployee] = useState({
+    name: "John Doe",
+    address: "123 Main Street",
+    company: "TechCorp"
+  });
+
+  const handleChange = () => {
+    setEmployee({
+      ...employee,
+      name: "Jane Smith",
+      address: "456 Park Avenue"
+    });
+  };
+
+  return (
+    <div>
+      <p><strong>Name:</strong> {employee.name}</p>
+      <p><strong>Address:</strong> {employee.address}</p>
+      <p><strong>Company:</strong> {employee.company}</p>
+      <button onClick={handleChange}>CHANGE</button>
+    </div>
+  );
+}
+
+export default EmployeeInfo;

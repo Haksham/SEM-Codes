@@ -1,0 +1,44 @@
+<html lang="en">
+  <body>
+    <input type="text" placeholder="Enter text" id="rov" />
+    <button onclick="translateTxt()">Translate</button>
+    <p id="result"></p>
+
+    <script>
+      function translateTxt() {
+        var str = document.getElementById("rov").value.toLowerCase();
+        let res = "";
+        for (let i = 0; i < str.length; i++) {
+          if ("aeiou ".includes(str[i])) {
+            res += str[i];
+          } else {
+            res += str[i] + "o" + str[i];
+          }
+        }
+        document.getElementById("result").innerHTML = res;
+      }
+    </script>
+  </body>
+</html>
+
+<!-- ------------------------OR--------------------------------- -->
+ <!-- if only in javascript as node.js -->
+
+function translate(str) {
+  let res = '';
+  const consonants = 'aeiou '
+
+  for (let i=0;i<str.length;i++) {
+    if ("aeiou ".includes(str[i])) {
+      res += str[i];
+    } else {
+      res += str[i] + 'o' + str[i];
+    }
+  }
+
+  return res;
+}
+
+console.log(translate("this is fun"));
+
+// run : node filename.js

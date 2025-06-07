@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <h2>Student Registration Form</h2>
+  <form>
+    <label>Name:</label><br />
+    <input
+      type="text"
+      required
+      pattern="[A-Za-z\s]+"
+
+    <label>Email:</label><br />
+    <input
+      type="email"
+      placeholder="please enter valid email address"
+      required
+    
+    <label>Phone:</label><br />
+    <input
+      type="tel"
+      pattern="\d{3}-\d{3}-\d{4}"
+      placeholder="080-555-5555"
+      required
+
+    <label>Semester:</label><br />
+    <input
+      type="number"
+      min="1"
+      max="8"
+      required
+
+    <label>Branch:</label><br />
+    <input list="branches" required />
+    <datalist id="branches">
+      <option value="Computer Science" />
+      <option value="Electronics" />
+      <option value="Mechanical" />
+      <option value="Civil" />
+      <option value="Electrical" />
+    </datalist>
+
+    <label>Website:</label><br />
+    <input
+      type="url"
+      pattern="http://.*"
+      placeholder="http://example.com"
+      required
+
+    <input type="submit" value="Submit" />
+  </form>
+</body>
+</html>

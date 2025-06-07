@@ -1,0 +1,89 @@
+
+// install node_modules (folder) + node_mongo_2024 (folder)
+// make sure mongodb is running in your system
+// gedit server.js (add given content)
+// mkdir views(folder)
+// cd views
+// gedit form.html (add the respective given code below) 
+// cd ..
+// node server.js
+// visit localhost:3000 (on any browser)
+
+sudo systemctl start mongod (to start mongodb)
+
+------------------------------------------------------
+
+// server.js
+
+const express = require('express');
+const { MongoClient } = require('mongodb');
+const path = require('path');
+const app = express();
+const uri = 'mongodb://127.0.0.1:27017';
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'form.html'));
+});
+
+app.get('/submit', async (req, res) => {
+  const { name, branch, semester } = req.query;
+  const sem = parseInt(semester);
+
+  if (!name || !branch || isNaN(sem)) {
+    return res.send('Invalid input');
+  }
+
+  let client;
+  try {
+    client = await MongoClient.connect(uri, { useUnifiedTopology: true });
+    const db = client.db('studentsDB');
+    const collection = db.collection('students');
+
+    await collection.insertOne({ name, branch, semester: sem });
+
+    res.send(`<p>Student record added.</p><a href="/">Back</a>`);
+  } catch (err) {
+  } finally {
+    if (client) await client.close();
+  }
+});
+
+app.get('/filter', async (req, res) => {
+  let client;
+  try {
+    client = await MongoClient.connect(uri, { useUnifiedTopology: true });
+    const db = client.db('studentsDB');
+    const collection = db.collection('students');
+
+    const students = await collection.find({ branch: /cse/i, semester: 6 }).toArray();
+
+    let html = `<h2>CSE Branch - 6th Semester Students</h2><ul>`;
+    students.forEach(s => {
+      html += `<li>${s.name} - ${s.branch} - Semester ${s.semester}</li>`;
+    });
+    html += `</ul><a href="/">Back</a>`;
+    res.send(html);
+  } catch (err) {
+  } finally {
+    if (client) await client.close();
+  }
+});
+
+app.listen(3000);
+
+------------------------------------------------
+
+// form.html
+
+<html>
+<body>
+  <h2>Student Information Form</h2>
+  <form action="/submit" method="get">
+    Name: <input type="text" name="name" required /><br /><br />
+    Branch: <input type="text" name="branch" required /><br /><br />
+    Semester: <input type="number" name="semester" min="1" max="8" required /><br /><br />
+    <input type="submit" value="Submit" />
+  </form>
+  <a href="/filter">Show CSE 6th Sem Students</a>
+</body>
+</html>
