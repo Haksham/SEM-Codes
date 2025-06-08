@@ -3,48 +3,48 @@
 <body>
   <h2>Student Registration Form</h2>
   <form>
-    <label>Name:</label><br />
+    <label>Name:</label>
     <input
       type="text"
       required
-      pattern="[A-Za-z\s]+"
-
-    <label>Email:</label><br />
+      pattern="[A-Za-z\s]+"/>
+    <br />
+    <label>Email:</label>
     <input
       type="email"
       placeholder="please enter valid email address"
-      required
-    
-    <label>Phone:</label><br />
+      required/>
+    <br />
+    <label>Phone:</label>
     <input
       type="tel"
       pattern="\d{3}-\d{3}-\d{4}"
       placeholder="080-555-5555"
-      required
-
-    <label>Semester:</label><br />
+      required/>
+    <br />
+    <label>Semester:</label>
     <input
       type="number"
       min="1"
       max="8"
-      required
-
-    <label>Branch:</label><br />
+      required/>
+    <br />
+    <label>Branch:</label>
     <input list="branches" required />
     <datalist id="branches">
-      <option value="Computer Science" />
-      <option value="Electronics" />
-      <option value="Mechanical" />
-      <option value="Civil" />
-      <option value="Electrical" />
+      <option value="Computer Science">
+      <option value="Electronics">
+      <option value="Mechanical">
+      <option value="Civil">
+      <option value="Electrical">
     </datalist>
-
-    <label>Website:</label><br />
+    <br />
+    <label>Website:</label>
     <input
       type="url"
       pattern="http://.*"
       placeholder="http://example.com"
-      required
+      required/>
 
     <input type="submit" value="Submit" />
   </form>
