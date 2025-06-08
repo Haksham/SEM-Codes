@@ -1,0 +1,48 @@
+
+<!-- install react folder from server (also provided in this web-test folder)
+install node_module folder (also provided in this web-test folder)
+gedit 4a.html (write the given code)
+open 4a.html
+
+note: no need on npm init or npm install, use only provided folders -->
+
+<html>
+  <head>
+    <meta charset="UTF-8" /> <!-- **really important line -->
+    <script src="react/react.development.js"></script>
+    <script src="react/react-dom.development.js"></script>
+    <script src="react/prop-types.js"></script>
+    <script src="react/babel.min.js"></script>
+	
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+class Qb6a extends React.Component {
+   constructor(props) {
+      super(props);
+      this.state = {data: ''}
+   };
+   updateState(e) {
+      this.setState({data: e.target.value});
+   }
+  
+   render() {
+      return (
+	  <form>
+      <div>
+		    <label>Username : </label>
+            <input type = "text" value = {this.state.data} 
+               onChange = {this.updateState.bind(this)} />
+            <h1>{this.state.data}</h1>
+		 </div>
+		 </form>
+      );
+   }
+}
+ReactDOM.render(<Qb6a />, document.getElementById('root'));
+    </script>
+    
+  </body>
+</html>

@@ -28,7 +28,7 @@ app.get('/insert', async (req, res) => {
     	const lowScorers = await collection.find({ marks: { $lt: 20 } }).toArray();
     	
     	console.log('Students with marks < 20:', lowScorers);
-    	res.send(lowScorers);
+    	res.json(lowScorers);
 
   } catch (err) {
     	console.error('Error:', err);
@@ -40,11 +40,10 @@ app.get('/insert', async (req, res) => {
   }
 });
 
-app.listen(5008, () => {
+app.listen(5000, () => {
   console.log('Listening on port 5000');
 });
 
 // p1.html (make a "hello world" file)
 // Node (current js)
 // Mongo Node (file)
-// package.json and package-lock.json (make a file)
