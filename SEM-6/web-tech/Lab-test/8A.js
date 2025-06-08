@@ -4,7 +4,7 @@
 // gedit package.json (add the respective given code below) 
 // npm start
 
------------------------------------------------------
+//-----------------------------------------------------
 // index.js
 
 function vowelCount(input) {
@@ -24,7 +24,7 @@ function vowelCount(input) {
 }
 
 vowelCount('Le Tour de France');
-------------------------------------------------------------------------
+//------------------------------------------------------------------------
 // package.json
 
 {

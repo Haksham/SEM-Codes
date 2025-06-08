@@ -9,7 +9,7 @@
 // visit localhost:3000 (on any browser)
 
 
-------------------------------------------------------
+// ------------------------------------------------------
 
 // server.js (content)
 
@@ -30,7 +30,7 @@ app.get('/contact', (req, res) => {res.sendFile(path.join(__dirname, 'views', 'c
 
 app.listen(PORT, () => {console.log(`Server running at http://localhost:${PORT}`);});
 
----------------------------------------------------------
+// ---------------------------------------------------------
 
 // home.html
 
@@ -44,6 +44,7 @@ app.listen(PORT, () => {console.log(`Server running at http://localhost:${PORT}`
 </body>
 </html>
 
+//------------------------------------------------------------
 // announcements.html
 
 <html>

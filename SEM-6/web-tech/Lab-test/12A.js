@@ -3,30 +3,26 @@
 // gedit stack.js queue.js server.js (add the below provided content)
 // node server.js
 
-----------------------------------------------------
+// ----------------------------------------------------
 // stack.js
 
 export class Stack {
     constructor() { this.items = [];}
 
   push(element) {this.items.push(element);}
-
   pop() {
     if (this.isEmpty()) {return null;}
     return this.items.pop();
   }
-
   peek() {
     if (this.isEmpty()) {return null;}
     return this.items[this.items.length - 1];
   }
-
   isEmpty() {return this.items.length === 0;}
-
   size() {return this.items.length;}
 }
 
-----------------------------------------------------------
+// ----------------------------------------------------------
 // queue.js
 
 export class Queue {
@@ -38,18 +34,15 @@ export class Queue {
     if (this.isEmpty()) {return null;}
     return this.items.shift();
   }
-
   front() {
     if (this.isEmpty()) {return null;}
     return this.items[0];
   }
-
   isEmpty() { return this.items.length === 0;}
-
   size() {return this.items.length;}
 }
 
--------------------------------------------------------------
+// -------------------------------------------------------------
 // server.js
 
 import { Stack } from './stack.js';

@@ -8,13 +8,12 @@
 // node server.js
 // visit localhost:3000 (on any browser)
 
-------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 // server.js
 
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = 3000;
 
 app.get('/', (req, res) => {
   res.send(`
@@ -39,8 +38,9 @@ app.get('/me', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'me.html'));
 });
 
-app.listen(PORT);
-------------------------------------------------------------------
+app.listen(3000);
+
+// ------------------------------------------------------------------
 
 // cse.html + ece.html + me.html
 <html>

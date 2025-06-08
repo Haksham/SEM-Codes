@@ -5,7 +5,7 @@
 // visit localhost:3000 (on any browser)
 // also check the console for logs
 
------------------------------------------------------
+//-----------------------------------------------------
 
 // server.js
 const express = require('express');
