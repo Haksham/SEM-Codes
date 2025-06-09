@@ -77,10 +77,10 @@ app.listen(3000);
 <body>
   <h2>Exam Fee Submission</h2>
   <form action="/submit" method="get">
-    <label>Student Name: <input type="text" name="student_name" required></label><br><br>
-    <label>USN: <input type="text" name="usn" required></label><br><br>
-    <label>Semester: <input type="text" name="semester" required></label><br><br>
-    <label>Exam Fee: <input type="number" name="exam_fee" required></label><br><br>
+    Student Name: <input type="text" name="student_name" required/><br/>
+    USN: <input type="text" name="usn" required/><br/>
+    Semester: <input type="text" name="semester" required/><br/>
+    Exam Fee: <input type="number" name="exam_fee" required/><br/>
     <button type="submit">Submit</button>
   </form>
 </body>
