@@ -1,0 +1,20 @@
+<html>
+<body>
+  <input type="text" id="input" placeholder="Enter month number (1-12)">
+  <button onclick="convert()">Convert</button>
+  <p id="result"></p>
+
+  <script>
+    function convert() {
+      const list = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      const input = document.getElementById('input').value;
+      const month = Math.floor(input);
+      const result = (isNaN(month) || month < 1 || month > 12) ? "Bad Number" : list[month - 1];
+      document.getElementById('result').textContent = result;
+    }
+  </script>
+</body>
+</html>
