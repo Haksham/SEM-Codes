@@ -1,0 +1,49 @@
+
+<!-- 
+install react folder from server (also provided in this web-test folder)
+install node_module folder (also provided in this web-test folder)
+gedit 4a.html (write the given code)
+open 4a.html
+
+note: no need on npm init or npm install, use only provided folders 
+-->
+
+<html>
+  <head>
+    <meta charset="UTF-8" /> <!-- **really important line -->
+    <script src="react/react.development.js"></script>
+    <script src="react/react-dom.development.js"></script>
+    <script src="react/prop-types.js"></script>
+    <script src="react/babel.min.js"></script>
+  </head>
+  <body>
+     <div id="root"></div>
+     <script type="text/babel">
+		   class Qb4a extends React.Component {
+    constructor()
+    {
+        super()
+        this.state=
+        {
+            name:"harsh",
+            address:"msrit",
+            company:"xyz"
+        }
+    }
+    changeMessage(){
+        this.setState({
+            name:"haksham",
+            address:"udz"
+        })
+    }
+    render() {
+        return (
+            <div>
+                <p>{this.state.name} {this.state.address} {this.state.company}</p>
+                <button onClick={()=>this.changeMessage()}>Change</button>
+            </div>)}}
+
+		ReactDOM.render(<Qb4a />,document.getElementById('root'));
+        </script>	
+  </body>
+</html>
