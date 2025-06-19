@@ -1,0 +1,32 @@
+<html>
+<body>
+  <h2>Pluralize Nouns Output</h2>
+  Noun: <input type="text" id="noun" required>
+  Number: <input type="number" id="num" required>
+  <button onclick="handleSubmit()">Pluralize</button>
+  <div id="output"></div>
+  <script>
+    function pluralize(noun, num) {
+      let result = "";
+      if (num == 1) {
+        result = num + " : " + noun;
+      } else {
+        if (noun == "sheep") {
+          result = num + " : " + noun;
+        } else if (noun == "goose") {
+          result = num + " : geese";
+        } else {
+          result = num + " : " + noun + "s";
+        }
+      }
+      document.getElementById("output").textContent += result + "\n";
+    }
+
+    function handleSubmit() {
+      const noun = document.getElementById("noun").value.trim();
+      const num = parseInt(document.getElementById("num").value, 10);
+      pluralize(noun, num);
+    }
+  </script>
+</body>
+</html>

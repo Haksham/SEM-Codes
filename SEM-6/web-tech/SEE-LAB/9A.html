@@ -1,0 +1,27 @@
+<html>
+<body>
+  <h2>notBad Function Demo</h2>
+  <input type="text" id="inputStr" placeholder="Enter a sentence">
+  <button onclick="runNotBad()">Check</button>
+  <div id="result"></div>
+
+  <script>
+    function notBad(str) {
+      let not = str.indexOf("not");
+      let bad = str.indexOf("bad");
+
+      if (not !== -1 && bad !== -1 && bad > not) {
+        return str.slice(0, not) + "good" + str.slice(bad + 3);
+      } else {
+        return str;
+      }
+    }
+
+    function runNotBad() {
+      const input = document.getElementById('inputStr').value;
+      const output = notBad(input);
+      document.getElementById('result').textContent = output;
+    }
+  </script>
+</body>
+</html>

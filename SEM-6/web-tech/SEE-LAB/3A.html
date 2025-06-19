@@ -1,0 +1,45 @@
+<html>
+<body>
+    <h1>Student Data Management with Closures</h1>
+    <div id="output"></div>
+
+    <script>
+        function studentData() {
+            const students = [];
+            return {
+                addStudent(usn, subjectCode, subjectName, cieMarks, seeMarks) {
+                    const _cieMarks = cieMarks;
+                    const _seeMarks = seeMarks;
+                    const student = {
+                        usn,subjectCode,subjectName,
+                        getTotalMarks() {
+                            return _cieMarks + _seeMarks;
+                        },
+                        displayDetails() { return `USN: ${this.usn} Subject Code: ${this.subjectCode} Subject Name: ${this.subjectName} Total Marks: ${this.getTotalMarks()}`;}
+                    };
+                    students.push(student);
+                    return student;
+                },
+                
+                displayAllStudents() {
+                    let output = "STUDENT DETAILS:\n";
+                    students.forEach(student => {
+                        output += student.displayDetails();
+                    });
+                    return output;
+                },
+                
+                getStudent(index) {
+                    return students[index];
+                }
+            };
+        }
+        const output = document.getElementById('output');
+        const manager = studentData();
+        manager.addStudent("1MS21CS001", "21CS42", "Operating Systems", 40, 45);
+        manager.addStudent("1MS21CS002", "21CS43", "Algorithms", 38, 49);
+        output.textContent = manager.displayAllStudents();
+        output.textContent += "Attempting to access private CIE marks: " + manager.getStudent(0)._cieMarks;
+    </script>
+</body>
+</html>
